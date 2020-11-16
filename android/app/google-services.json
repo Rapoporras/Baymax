@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "15168155064",
+    "firebase_url": "https://baymax-a4aef.firebaseio.com",
+    "project_id": "baymax-a4aef",
+    "storage_bucket": "baymax-a4aef.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:15168155064:android:9b8d0310dbd13c8c95b34d",
+        "android_client_info": {
+          "package_name": "com.rapoporras.baymax"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "15168155064-f9ldu5m3gok1utl5379515838jq0qtv5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEYXVbmEi69M9JfqqGjMLU9mvTZoaCKFQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "15168155064-f9ldu5m3gok1utl5379515838jq0qtv5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
