@@ -5,7 +5,6 @@
 import 'package:baymax/Pages/singin_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_signin_button/button_builder.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -22,9 +21,6 @@ class _RegisterPageState extends State<RegisterPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-
-  bool _success;
-  String _userEmail;
 
   @override
   Widget build(BuildContext context) {
@@ -266,17 +262,12 @@ class _RegisterPageState extends State<RegisterPage> {
         .user;
     if (user != null) {
       setState(() {
-        _success = true;
-        _userEmail = user.email;
-
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) {
             return SignInPage();
           },
         ));
       });
-    } else {
-      _success = false;
     }
   }
 }

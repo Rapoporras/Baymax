@@ -2,28 +2,23 @@ import 'package:baymax/Component/fab_bottom_app_bar.dart';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
 
-class Main_page extends StatefulWidget {
-  Main_page({Key key}) : super(key: key);
+class MainPage extends StatefulWidget {
+  MainPage({Key key}) : super(key: key);
 
   final String title = "hola";
 
   @override
-  _Main_page createState() => new _Main_page();
+  _MainPage createState() => new _MainPage();
 }
 
-class _Main_page extends State<Main_page> with TickerProviderStateMixin {
+class _MainPage extends State<MainPage> with TickerProviderStateMixin {
   String _lastSelected = 'TAB: 0';
 
   void _selectedTab(int index) {
     setState(() {
       _lastSelected = 'TAB: $index';
-    });
-  }
-
-  void _selectedFab(int index) {
-    setState(() {
-      _lastSelected = 'FAB: $index';
     });
   }
 

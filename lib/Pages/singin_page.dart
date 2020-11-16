@@ -2,14 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:baymax/Pages/main_page.dart';
+import 'package:baymax/Pages/Main_page.dart';
 import 'package:baymax/Pages/register_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -345,7 +343,7 @@ class _EmailPasswordFormState extends State<_EmailPasswordForm> {
                                       Navigator.of(context).push(
                                         MaterialPageRoute(
                                           builder: (context) {
-                                            return Main_page();
+                                            return MainPage();
                                           },
                                         ),
                                       )
@@ -407,7 +405,7 @@ class _EmailPasswordFormState extends State<_EmailPasswordForm> {
           .user;
 
       Navigator.of(context).push(
-        MaterialPageRoute<void>(builder: (_) => Main_page()),
+        MaterialPageRoute<void>(builder: (_) => MainPage()),
       );
     } catch (e) {
       Scaffold.of(context).showSnackBar(SnackBar(
