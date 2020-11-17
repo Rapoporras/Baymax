@@ -1,4 +1,10 @@
+import 'package:baymax/Component/config.dart';
 import 'package:baymax/Component/fab_bottom_app_bar.dart';
+import 'package:baymax/Pages/page1.dart';
+import 'package:baymax/Pages/page2.dart';
+import 'package:baymax/Pages/page3.dart';
+import 'package:baymax/Pages/page4.dart';
+import 'package:baymax/Pages/page5.dart';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -14,11 +20,19 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPage extends State<MainPage> with TickerProviderStateMixin {
-  String _lastSelected = 'TAB: 0';
+  int _selectedIndex = 0;
+  static const TextStyle optionStyle =
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  List<Widget> _widgetOptions = <Widget>[
+    Page1(),
+    Page2(),
+    Page3(),
+    Page4(),
+  ];
 
   void _selectedTab(int index) {
     setState(() {
-      _lastSelected = 'TAB: $index';
+      _selectedIndex = index;
     });
   }
 
@@ -29,13 +43,10 @@ class _MainPage extends State<MainPage> with TickerProviderStateMixin {
       //   title: Text(widget.title),
       // ),
       body: Center(
-        child: Text(
-          _lastSelected,
-          style: TextStyle(fontSize: 32.0),
-        ),
+        child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: FABBottomAppBar(
-        centerItemText: 'Tarjeta QR',
+        centerItemText: 'Id Card',
         color: Colors.grey,
         selectedColor: Colors.blue,
         notchedShape: CircularNotchedRectangle(),
@@ -49,7 +60,16 @@ class _MainPage extends State<MainPage> with TickerProviderStateMixin {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) {
+                return Page5();
+              },
+            ),
+          );
+          // currentTheme.switchTheme();
+        },
         tooltip: 'Increment',
         backgroundColor: Colors.blue,
         child: FaIcon(

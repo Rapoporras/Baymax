@@ -218,7 +218,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                         color: Colors.white,
                                         child: Icon(
                                           Icons.arrow_forward,
-                                          color: Colors.white,
+                                          color: Color(0xFF4285f4),
                                         ),
                                         onPressed: () {},
                                       ),
