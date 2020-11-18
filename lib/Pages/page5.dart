@@ -1,6 +1,8 @@
 import 'package:baymax/Pages/main_page.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
+import 'package:baymax/Component/config.dart';
+
 // import 'package:firebase_auth/firebase_auth.dart';
 
 class Page5 extends StatefulWidget {
@@ -30,6 +32,7 @@ class _Page5 extends State<Page5> with TickerProviderStateMixin {
                         version: QrVersions.auto,
                         size: 320,
                         gapless: false,
+                        // foregroundColor: Color(color()),
                         embeddedImage: NetworkImage(
                             'https://img2.wikia.nocookie.net/__cb20140719160257/disney/images/0/05/Baymax_Render.png'),
                         embeddedImageStyle: QrEmbeddedImageStyle(
