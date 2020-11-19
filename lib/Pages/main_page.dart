@@ -61,14 +61,14 @@ class _MainPage extends State<MainPage> with TickerProviderStateMixin {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) {
-                return Page5();
-              },
-            ),
-          );
-          // currentTheme.switchTheme();
+          // Navigator.of(context).push(
+          //   MaterialPageRoute(
+          //     builder: (context) {
+          //       return Page5();
+          //     },
+          //   ),
+          // );
+          currentTheme.switchTheme();
         },
         tooltip: 'Increment',
         backgroundColor: Colors.blue,
