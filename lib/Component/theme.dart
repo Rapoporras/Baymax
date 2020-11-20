@@ -2,7 +2,7 @@ import 'package:baymax/Component/config.dart';
 import 'package:flutter/material.dart';
 
 class MyTheme with ChangeNotifier {
-  static bool _isDark = true;
+  static bool _isDark = false;
 
   MyTheme() {
     if (box.containsKey('currentTheme')) {

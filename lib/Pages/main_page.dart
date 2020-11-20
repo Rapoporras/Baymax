@@ -1,10 +1,9 @@
 import 'package:baymax/Component/config.dart';
 import 'package:baymax/Component/fab_bottom_app_bar.dart';
-import 'package:baymax/Pages/page1.dart';
+import 'package:baymax/Pages/Agenda/agenda.dart';
+import 'package:baymax/Pages/home.dart';
 import 'package:baymax/Pages/page2.dart';
-import 'package:baymax/Pages/page3.dart';
 import 'package:baymax/Pages/page4.dart';
-import 'package:baymax/Pages/page5.dart';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -21,12 +20,12 @@ class MainPage extends StatefulWidget {
 
 class _MainPage extends State<MainPage> with TickerProviderStateMixin {
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  // static const TextStyle optionStyle =
+  //     TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   List<Widget> _widgetOptions = <Widget>[
-    Page1(),
+    Home(),
     Page2(),
-    Page3(),
+    Agenda(),
     Page4(),
   ];
 
@@ -46,16 +45,20 @@ class _MainPage extends State<MainPage> with TickerProviderStateMixin {
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: FABBottomAppBar(
-        centerItemText: 'Id Card',
-        color: Colors.grey,
+        centerItemText: 'Tarjeta',
+        color: Color(0xff000000),
+        backgroundColor: Color(0xffB9B6B6),
         selectedColor: Colors.blue,
         notchedShape: CircularNotchedRectangle(),
         onTabSelected: _selectedTab,
         items: [
-          FABBottomAppBarItem(iconData: Icons.menu, text: 'This'),
-          FABBottomAppBarItem(iconData: Icons.layers, text: 'Is'),
-          FABBottomAppBarItem(iconData: Icons.dashboard, text: 'Bottom'),
-          FABBottomAppBarItem(iconData: Icons.info, text: 'Bar'),
+          FABBottomAppBarItem(
+              iconData: FontAwesomeIcons.userAlt, text: 'Perfil'),
+          FABBottomAppBarItem(
+              iconData: FontAwesomeIcons.userMd, text: 'Doctor'),
+          FABBottomAppBarItem(
+              iconData: FontAwesomeIcons.solidCalendarAlt, text: 'Agemda'),
+          FABBottomAppBarItem(iconData: FontAwesomeIcons.cog, text: 'Ajustes'),
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -70,10 +73,10 @@ class _MainPage extends State<MainPage> with TickerProviderStateMixin {
           // );
           currentTheme.switchTheme();
         },
-        tooltip: 'Increment',
+        tooltip: 'Tarjeta',
         backgroundColor: Colors.blue,
         child: FaIcon(
-          FontAwesomeIcons.userMd,
+          FontAwesomeIcons.qrcode,
           color: Color(0xFFffffff),
         ),
         elevation: 2.0,
