@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:baymax/Pages/Help/ayuda.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 
@@ -19,7 +20,21 @@ class _Home extends State<Home> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Hola "),
+          title: Text("Bienvenido"),
+          actions: <Widget>[
+            IconButton(
+              icon: new Icon(Icons.help),
+              onPressed: () => {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return Ayuda();
+                    },
+                  ),
+                )
+              },
+            ),
+          ],
         ),
         body: ListView(
           // scrollDirection: ,

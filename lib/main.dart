@@ -37,13 +37,17 @@ class _BaymaxApp extends State<BaymaxApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Firebase Example App',
-        theme: ThemeData.light(),
-        darkTheme: ThemeData.dark(),
-        themeMode: currentTheme.currentTheme(),
-        debugShowCheckedModeBanner: false,
-        home: Scaffold(
-          body: MainPage(),
-        ));
+      title: 'Firebase Example App',
+      theme: ThemeData.light(),
+      darkTheme: ThemeData.dark(),
+      themeMode: currentTheme.currentTheme(),
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        body: MainPage(),
+      ),
+      routes: <String, WidgetBuilder>{
+        '/home': (BuildContext context) => new MainPage(),
+      },
+    );
   }
 }

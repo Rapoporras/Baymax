@@ -1,8 +1,8 @@
 import 'package:baymax/Component/config.dart';
 import 'package:baymax/Component/fab_bottom_app_bar.dart';
 import 'package:baymax/Pages/Agenda/agenda.dart';
+import 'package:baymax/Pages/Doctor/doctor.dart';
 import 'package:baymax/Pages/home.dart';
-import 'package:baymax/Pages/page2.dart';
 import 'package:baymax/Pages/page4.dart';
 
 import 'package:flutter/material.dart';
@@ -24,7 +24,7 @@ class _MainPage extends State<MainPage> with TickerProviderStateMixin {
   //     TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   List<Widget> _widgetOptions = <Widget>[
     Home(),
-    Page2(),
+    Doctor(),
     Agenda(),
     Page4(),
   ];
@@ -38,9 +38,6 @@ class _MainPage extends State<MainPage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text(widget.title),
-      // ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),

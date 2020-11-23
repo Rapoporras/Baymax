@@ -1,3 +1,4 @@
+import 'package:baymax/Pages/Agenda/confirmacionCita.dart';
 import 'package:flutter/material.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:smart_select/smart_select.dart';
@@ -138,7 +139,7 @@ class _Especialista extends State<Especialista> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("hola"),
+          title: Text("Nueva cita"),
         ),
         body: ListView(
           children: [
@@ -165,6 +166,15 @@ class _Especialista extends State<Especialista> with TickerProviderStateMixin {
                               color: Color(0xff000000))),
                     ),
                   ),
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return ConfirmacionCita();
+                        },
+                      ),
+                    );
+                  },
                 ))
           ],
         ));
