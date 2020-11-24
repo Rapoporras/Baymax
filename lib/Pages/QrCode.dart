@@ -34,7 +34,7 @@ class _QrCode extends State<QrCode> with TickerProviderStateMixin {
                         gapless: false,
                         foregroundColor: Color(0xff0C2231),
                         embeddedImage: NetworkImage(
-                            'https://img2.wikia.nocookie.net/__cb20140719160257/disney/images/0/05/Baymax_Render.png'),
+                            'https://img2.wikia.nocookie.net/__cb20140719160257/disney/images/0/05/Care4U_Render.png'),
                         embeddedImageStyle: QrEmbeddedImageStyle(
                           size: Size(80, 80),
                         ),

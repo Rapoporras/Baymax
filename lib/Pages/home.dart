@@ -1,3 +1,4 @@
+import 'package:Care4U/Component/config.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -92,8 +93,7 @@ class _Home extends State<Home> with TickerProviderStateMixin {
                     shape: BoxShape.circle,
                     image: new DecorationImage(
                         fit: BoxFit.fill,
-                        image: new NetworkImage(
-                            "https://firebasestorage.googleapis.com/v0/b/medicosregistrados.appspot.com/o/%20smXb5Y6pEHyqaKicXDXf%2Fperfil.png?alt=media&token=242330e0-a492-4a95-ae41-5caed64b48ba")))),
+                        image: new NetworkImage(paciente.imagen)))),
           ),
           Container(
             height: 50,
@@ -101,13 +101,13 @@ class _Home extends State<Home> with TickerProviderStateMixin {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("José Santos López",
+                  Text(paciente.nombre,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
                           color: Color(0xff000000))),
-                  Text("Anemia y sobrepeso",
+                  Text(paciente.resumen,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: 16,
@@ -119,7 +119,7 @@ class _Home extends State<Home> with TickerProviderStateMixin {
           ),
           Container(
             height: 60,
-            child: Text("13/06/1940",
+            child: Text(paciente.nacimiento,
                 textAlign: TextAlign.right,
                 style: TextStyle(
                     fontSize: 16,
@@ -132,6 +132,17 @@ class _Home extends State<Home> with TickerProviderStateMixin {
   }
 
   void numeroCovid(provincia) {
+    // FirebaseFirestore.instance
+    //     .collection('numero_covid')
+    //     .doc("3AG6qws1OEJbM8wCAloR")
+    //     .get()
+    //     .then((DocumentSnapshot documentSnapshot) {
+    //   // print(documentSnapshot.data()["Madrid"]);
+    //   String phone = documentSnapshot.data()[provincia];
+    //   // print(phone);
+    //   // print(provincia);
+    //   launch('tel://$phone');
+    // });
     FirebaseFirestore.instance
         .collection('numero_covid')
         .doc("3AG6qws1OEJbM8wCAloR")

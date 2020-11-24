@@ -265,7 +265,7 @@ class _Chat extends State<Chat> {
   void Response(query) async {
     _textController.clear();
     AuthGoogle authGoogle =
-        await AuthGoogle(fileJson: "Assets/baymax-a4aef-5c4e596516a1.json")
+        await AuthGoogle(fileJson: "Assets/Care4U-a4aef-5c4e596516a1.json")
             .build();
     Dialogflow dialogflow =
         Dialogflow(authGoogle: authGoogle, language: Language.english);

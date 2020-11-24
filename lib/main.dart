@@ -11,7 +11,7 @@ Future<void> main() async {
   await Firebase.initializeApp();
   await Hive.initFlutter();
   box = await Hive.openBox('easyTheme');
-  runApp(BaymaxApp());
+  runApp(Care4UApp());
 }
 
 /// The entry point of the application.
@@ -19,12 +19,12 @@ Future<void> main() async {
 /// Returns a [MaterialApp].
 ///
 
-class BaymaxApp extends StatefulWidget {
+class Care4UApp extends StatefulWidget {
   @override
-  _BaymaxApp createState() => _BaymaxApp();
+  _Care4UApp createState() => _Care4UApp();
 }
 
-class _BaymaxApp extends State<BaymaxApp> {
+class _Care4UApp extends State<Care4UApp> {
   @override
   void initState() {
     super.initState();

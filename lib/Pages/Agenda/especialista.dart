@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:smart_select/smart_select.dart';
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Especialista extends StatefulWidget {
   Especialista({Key key}) : super(key: key);
@@ -13,128 +14,10 @@ class Especialista extends StatefulWidget {
 }
 
 class _Especialista extends State<Especialista> with TickerProviderStateMixin {
-  List<Map<String, dynamic>> smartphones = [
-    {
-      'id': 'sk3',
-      'name': 'Samsung Keystone 3',
-      'brand': 'Samsung',
-      'category': 'Budget Phone'
-    },
-    {
-      'id': 'n106',
-      'name': 'Nokia 106',
-      'brand': 'Nokia',
-      'category': 'Budget Phone'
-    },
-    {
-      'id': 'n150',
-      'name': 'Nokia 150',
-      'brand': 'Nokia',
-      'category': 'Budget Phone'
-    },
-    {
-      'id': 'r7a',
-      'name': 'Redmi 7A',
-      'brand': 'Xiaomi',
-      'category': 'Mid End Phone'
-    },
-    {
-      'id': 'ga10s',
-      'name': 'Galaxy A10s',
-      'brand': 'Samsung',
-      'category': 'Mid End Phone'
-    },
-    {
-      'id': 'rn7',
-      'name': 'Redmi Note 7',
-      'brand': 'Xiaomi',
-      'category': 'Mid End Phone'
-    },
-    {
-      'id': 'ga20s',
-      'name': 'Galaxy A20s',
-      'brand': 'Samsung',
-      'category': 'Mid End Phone'
-    },
-    {
-      'id': 'mc9',
-      'name': 'Meizu C9',
-      'brand': 'Meizu',
-      'category': 'Mid End Phone'
-    },
-    {
-      'id': 'm6',
-      'name': 'Meizu M6',
-      'brand': 'Meizu',
-      'category': 'Mid End Phone'
-    },
-    {
-      'id': 'ga2c',
-      'name': 'Galaxy A2 Core',
-      'brand': 'Samsung',
-      'category': 'Mid End Phone'
-    },
-    {
-      'id': 'r6a',
-      'name': 'Redmi 6A',
-      'brand': 'Xiaomi',
-      'category': 'Mid End Phone'
-    },
-    {
-      'id': 'r5p',
-      'name': 'Redmi 5 Plus',
-      'brand': 'Xiaomi',
-      'category': 'Mid End Phone'
-    },
-    {
-      'id': 'ga70',
-      'name': 'Galaxy A70',
-      'brand': 'Samsung',
-      'category': 'Mid End Phone'
-    },
-    {
-      'id': 'ai11',
-      'name': 'iPhone 11 Pro',
-      'brand': 'Apple',
-      'category': 'Flagship Phone'
-    },
-    {
-      'id': 'aixr',
-      'name': 'iPhone XR',
-      'brand': 'Apple',
-      'category': 'Flagship Phone'
-    },
-    {
-      'id': 'aixs',
-      'name': 'iPhone XS',
-      'brand': 'Apple',
-      'category': 'Flagship Phone'
-    },
-    {
-      'id': 'aixsm',
-      'name': 'iPhone XS Max',
-      'brand': 'Apple',
-      'category': 'Flagship Phone'
-    },
-    {
-      'id': 'hp30',
-      'name': 'Huawei P30 Pro',
-      'brand': 'Huawei',
-      'category': 'Flagship Phone'
-    },
-    {
-      'id': 'ofx',
-      'name': 'Oppo Find X',
-      'brand': 'Oppo',
-      'category': 'Flagship Phone'
-    },
-    {
-      'id': 'gs10',
-      'name': 'Galaxy S10+',
-      'brand': 'Samsung',
-      'category': 'Flagship Phone'
-    },
-  ];
+  List<S2Choice<String>> especialidades = [];
+
+  List<Map<String, dynamic>> medicos = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -194,8 +77,38 @@ class _Especialista extends State<Especialista> with TickerProviderStateMixin {
         ));
   }
 
+  void obtenerEspecialidades() async {
+    especialidades.clear();
+    FirebaseFirestore _firestore = FirebaseFirestore.instance;
+    CollectionReference _stocks =
+        _firestore.collection('especialidadesDisponibles');
+    QuerySnapshot snapshot = await _stocks.get();
+    // Map<String, dynamic> data = snapshot.docs[1].data();
+
+    for (var item in snapshot.docs) {
+      especialidades.add(S2Choice<String>(
+          value: item.data()["id"].toString(), title: item.data()["nombre"]));
+    }
+    // print(especialidades);
+  }
+
+  void obtenerMedicos() async {
+    // medicos.clear();
+    FirebaseFirestore _firestore = FirebaseFirestore.instance;
+    CollectionReference _stocks = _firestore.collection('medicosRegistrados');
+    QuerySnapshot snapshot = await _stocks.get();
+    // Map<String, dynamic> data = snapshot.docs[1].data();
+
+    for (var item in snapshot.docs) {
+      medicos.add(item.data());
+    }
+    // await new Future.delayed(const Duration(seconds: 5));
+    // print(medicos);
+  }
+
   Widget tipoCita() {
-    List<String> _smartphone = [];
+    String especialidad = "";
+    obtenerEspecialidades();
 
     return Container(
       padding: EdgeInsets.only(left: 20, right: 20),
@@ -226,31 +139,26 @@ class _Especialista extends State<Especialista> with TickerProviderStateMixin {
                     offset: Offset(0, 4), // changes position of shadow
                   ),
                 ]),
-            child: SmartSelect<String>.multiple(
+            child: SmartSelect<String>.single(
                 title: 'Tipo de citas',
-                placeholder: 'Listado de citas',
-                value: _smartphone,
-                onChange: (state) => setState(() => _smartphone = state.value),
-                choiceItems: S2Choice.listFrom<String, Map>(
-                  source: smartphones,
-                  value: (index, item) => item['id'],
-                  title: (index, item) => item['name'],
-                  group: (index, item) => item['brand'],
-                ),
-                choiceGrouped: true,
-                choiceConfig: const S2ChoiceConfig(
-                  useDivider: true,
-                ),
+                placeholder: 'Selecciona un tipo de cita',
+                value: especialidad,
+                onChange: (state) => setState(() => especialidad = state.value),
+                choiceItems: especialidades,
+                // choiceGrouped: true,
+                // modalFilter: true,
+                // modalFilterAuto: true,
                 modalType: S2ModalType.popupDialog,
-                modalFilter: true,
                 tileBuilder: (context, state) {
-                  return S2Tile.fromState(state,
-                      isTwoLine: true,
-                      leading: FaIcon(
-                        FontAwesomeIcons.briefcaseMedical,
-                        color: Color(0xFF000000),
-                        size: 40,
-                      ));
+                  return S2Tile.fromState(
+                    state,
+                    isTwoLine: true,
+                    leading: FaIcon(
+                      FontAwesomeIcons.briefcaseMedical,
+                      color: Color(0xFF000000),
+                      size: 40,
+                    ),
+                  );
                 }),
           )
         ],
@@ -259,8 +167,10 @@ class _Especialista extends State<Especialista> with TickerProviderStateMixin {
   }
 
   Widget doctor() {
-    List<String> _smartphone = [];
+    List<String> medico = [];
+    obtenerMedicos();
 
+    print(medicos);
     return Container(
       padding: EdgeInsets.only(left: 20, right: 20),
       // height: 80,
@@ -293,15 +203,20 @@ class _Especialista extends State<Especialista> with TickerProviderStateMixin {
                   ),
                 ]),
             child: SmartSelect<String>.multiple(
-                title: 'Medicos',
-                placeholder: 'Listado de Médicos',
-                value: _smartphone,
-                onChange: (state) => setState(() => _smartphone = state.value),
+                title: 'Médicos',
+                placeholder: 'Selecciona un médico',
+                value: medico,
+                onChange: (state) => setState(() => medico = state.value),
                 choiceItems: S2Choice.listFrom<String, Map>(
-                  source: smartphones,
-                  value: (index, item) => item['id'],
-                  title: (index, item) => item['name'],
-                  group: (index, item) => item['brand'],
+                  source: medicos,
+                  value: (index, item) => item['dni'],
+                  title: (index, item) =>
+                      item['nombre'] +
+                      " " +
+                      item["apellido1"] +
+                      " " +
+                      item["apellido2"],
+                  group: (index, item) => item['especialidad'],
                 ),
                 choiceGrouped: true,
                 choiceConfig: const S2ChoiceConfig(

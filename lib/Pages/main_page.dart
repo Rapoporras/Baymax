@@ -2,7 +2,7 @@ import 'package:Care4U/Component/config.dart';
 import 'package:Care4U/Component/fab_bottom_app_bar.dart';
 import 'package:Care4U/Pages/Agenda/agenda.dart';
 import 'package:Care4U/Pages/Doctor/doctor.dart';
-import 'package:Care4U/Pages/QrCode.dart';
+import 'package:Care4U/Pages/qrCode.dart';
 import 'package:Care4U/Pages/home.dart';
 import 'package:Care4U/Pages/page4.dart';
 
@@ -55,7 +55,7 @@ class _MainPage extends State<MainPage> with TickerProviderStateMixin {
           FABBottomAppBarItem(
               iconData: FontAwesomeIcons.userMd, text: 'Doctor'),
           FABBottomAppBarItem(
-              iconData: FontAwesomeIcons.solidCalendarAlt, text: 'Agemda'),
+              iconData: FontAwesomeIcons.solidCalendarAlt, text: 'Agenda'),
           FABBottomAppBarItem(iconData: FontAwesomeIcons.cog, text: 'Ajustes'),
         ],
       ),
