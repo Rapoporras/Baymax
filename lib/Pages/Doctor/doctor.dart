@@ -36,7 +36,11 @@ class _Doctor extends State<Doctor> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Doctor"),
+          title: Text("Doctor",
+              style: TextStyle(
+                  color: Color(0xff0c2231),
+                  fontSize: 22,
+                  fontWeight: FontWeight.w700)),
         ),
         body: ListView(
           padding: EdgeInsets.only(left: 20, right: 20, top: 20),
@@ -54,10 +58,18 @@ class _Doctor extends State<Doctor> with TickerProviderStateMixin {
                   padding: EdgeInsets.only(bottom: 20, top: 10),
                   decoration: BoxDecoration(
                       border: Border.all(
-                        color: Color(0xffB9B6B6),
+                        color: Color(0xffffffff),
                       ),
-                      color: Color(0xffB9B6B6),
-                      borderRadius: BorderRadius.all(Radius.circular(15))),
+                      color: Color(0xffffffff),
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.25),
+                          spreadRadius: 0,
+                          blurRadius: 4,
+                          offset: Offset(0, 4), // changes position of shadow
+                        ),
+                      ]),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -68,7 +80,7 @@ class _Doctor extends State<Doctor> with TickerProviderStateMixin {
                           Container(
                             width: 50,
                             // color: Colors.green,
-                            height: 70,
+                            height: 60,
                             margin: EdgeInsets.only(top: 5, left: 15),
                             child: FaIcon(
                               FontAwesomeIcons.userCircle,
@@ -77,24 +89,24 @@ class _Doctor extends State<Doctor> with TickerProviderStateMixin {
                             ),
                           ),
                           Container(
-                            height: 70,
+                            height: 60,
                             margin: EdgeInsets.only(top: 15, left: 15),
                             child: Center(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text("Dra. Méndez - Nutricionista",
+                                  Text("Dra. Lucía Méndez - Nutricionista",
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.normal,
-                                          color: Color(0xff000000))),
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w300,
+                                          color: Color(0xff333333))),
                                   Text("Hospital San Camilo",
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize: 16,
-                                          fontWeight: FontWeight.normal,
-                                          color: Color(0xff000000))),
+                                          fontWeight: FontWeight.w300,
+                                          color: Color(0xff333333))),
                                 ],
                               ),
                             ),
@@ -117,15 +129,15 @@ class _Doctor extends State<Doctor> with TickerProviderStateMixin {
                             Text("Última visita: ",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                    color: Color(0xff000000))),
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w700,
+                                    color: Color(0xff333333))),
                             Text("02/11/2020",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.normal,
-                                    color: Color(0xff000000))),
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w300,
+                                    color: Color(0xff333333))),
                           ],
                         ),
                       ),
@@ -145,15 +157,15 @@ class _Doctor extends State<Doctor> with TickerProviderStateMixin {
                             Text("Motivo de visita: ",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                    color: Color(0xff000000))),
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w700,
+                                    color: Color(0xff333333))),
                             Text("sobrepeso y anemia",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.normal,
-                                    color: Color(0xff000000))),
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w300,
+                                    color: Color(0xff333333))),
                           ],
                         ),
                       ),
@@ -171,9 +183,9 @@ class _Doctor extends State<Doctor> with TickerProviderStateMixin {
                             children: [
                               Text("Tratamiento",
                                   style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.normal,
-                                      color: Color(0xff000000))),
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w300,
+                                      color: Color(0xff333333))),
                               Container(
                                 margin: EdgeInsets.only(top: 10, bottom: 10),
                                 child: Column(
@@ -181,14 +193,14 @@ class _Doctor extends State<Doctor> with TickerProviderStateMixin {
                                   children: [
                                     Text('- Syron',
                                         style: TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.normal,
-                                            color: Color(0xff000000))),
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w300,
+                                            color: Color(0xff333333))),
                                     Text('- Dieta revisable mensualmente',
                                         style: TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.normal,
-                                            color: Color(0xff000000))),
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w300,
+                                            color: Color(0xff333333))),
                                   ],
                                 ),
                               ),
@@ -202,17 +214,27 @@ class _Doctor extends State<Doctor> with TickerProviderStateMixin {
                                         EdgeInsets.only(top: 15, bottom: 15),
                                     decoration: BoxDecoration(
                                         border: Border.all(
-                                          color: Color(0xffffffff),
+                                          color: Color(0xff5DB2E8),
                                         ),
                                         color: Color(0xffffffff),
                                         borderRadius: BorderRadius.all(
-                                            Radius.circular(5))),
+                                            Radius.circular(5)),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color:
+                                                Colors.black.withOpacity(0.25),
+                                            spreadRadius: 0,
+                                            blurRadius: 4,
+                                            offset: Offset(0,
+                                                4), // changes position of shadow
+                                          ),
+                                        ]),
                                     child: Center(
                                       child: Text("Receta",
                                           style: TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.bold,
-                                              color: Color(0xff000000))),
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w500,
+                                              color: Color(0xff333333))),
                                     ),
                                   ),
                                   InkWell(
@@ -222,17 +244,27 @@ class _Doctor extends State<Doctor> with TickerProviderStateMixin {
                                           EdgeInsets.only(top: 15, bottom: 15),
                                       decoration: BoxDecoration(
                                           border: Border.all(
-                                            color: Color(0xffffffff),
+                                            color: Color(0xff5DB2E8),
                                           ),
                                           color: Color(0xffffffff),
                                           borderRadius: BorderRadius.all(
-                                              Radius.circular(5))),
+                                              Radius.circular(5)),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: Colors.black
+                                                  .withOpacity(0.25),
+                                              spreadRadius: 0,
+                                              blurRadius: 4,
+                                              offset: Offset(0,
+                                                  4), // changes position of shadow
+                                            ),
+                                          ]),
                                       child: Center(
                                         child: Text("Dieta",
                                             style: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.bold,
-                                                color: Color(0xff000000))),
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.w500,
+                                                color: Color(0xff333333))),
                                       ),
                                     ),
                                     onTap: () {
@@ -262,17 +294,26 @@ class _Doctor extends State<Doctor> with TickerProviderStateMixin {
                               padding: EdgeInsets.only(top: 15, bottom: 15),
                               decoration: BoxDecoration(
                                   border: Border.all(
-                                    color: Color(0xffffffff),
+                                    color: Color(0xff5DB2E8),
                                   ),
                                   color: Color(0xffffffff),
                                   borderRadius:
-                                      BorderRadius.all(Radius.circular(5))),
+                                      BorderRadius.all(Radius.circular(5)),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black.withOpacity(0.25),
+                                      spreadRadius: 0,
+                                      blurRadius: 4,
+                                      offset: Offset(
+                                          0, 4), // changes position of shadow
+                                    ),
+                                  ]),
                               child: Center(
                                 child: Text("Pruebas",
                                     style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold,
-                                        color: Color(0xff000000))),
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w500,
+                                        color: Color(0xff333333))),
                               ),
                             ),
                             InkWell(
@@ -281,17 +322,26 @@ class _Doctor extends State<Doctor> with TickerProviderStateMixin {
                                 padding: EdgeInsets.only(top: 15, bottom: 15),
                                 decoration: BoxDecoration(
                                     border: Border.all(
-                                      color: Color(0xffffffff),
+                                      color: Color(0xff5DB2E8),
                                     ),
                                     color: Color(0xffffffff),
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(5))),
+                                        BorderRadius.all(Radius.circular(5)),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withOpacity(0.25),
+                                        spreadRadius: 0,
+                                        blurRadius: 4,
+                                        offset: Offset(
+                                            0, 4), // changes position of shadow
+                                      ),
+                                    ]),
                                 child: Center(
                                   child: Text("Parte Baja",
                                       style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold,
-                                          color: Color(0xff000000)
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w500,
+                                          color: Color(0xff333333)
                                               .withOpacity(0.3))),
                                 ),
                               ),
@@ -321,17 +371,26 @@ class _Doctor extends State<Doctor> with TickerProviderStateMixin {
                                 padding: EdgeInsets.only(top: 15, bottom: 15),
                                 decoration: BoxDecoration(
                                     border: Border.all(
-                                      color: Color(0xffffffff),
+                                      color: Color(0xffC5EDFC),
                                     ),
-                                    color: Color(0xffffffff),
+                                    color: Color(0xffC5EDFC),
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(5))),
+                                        BorderRadius.all(Radius.circular(5)),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withOpacity(0.25),
+                                        spreadRadius: 0,
+                                        blurRadius: 4,
+                                        offset: Offset(
+                                            0, 4), // changes position of shadow
+                                      ),
+                                    ]),
                                 child: Center(
                                   child: Text("Chat de ayuda",
                                       style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold,
-                                          color: Color(0xff000000))),
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w500,
+                                          color: Color(0xff333333))),
                                 ),
                               ),
                               onTap: () {

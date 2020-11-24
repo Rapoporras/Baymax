@@ -17,10 +17,10 @@ class Agenda extends StatefulWidget {
 }
 
 class _Agenda extends State<Agenda> with TickerProviderStateMixin {
-  DateTime _currentDate = DateTime(2019, 2, 3);
-  DateTime _currentDate2 = DateTime(2019, 2, 3);
-  String _currentMonth = DateFormat.yMMM().format(DateTime(2019, 2, 3));
-  DateTime _targetDateTime = DateTime(2019, 2, 3);
+  DateTime _currentDate = DateTime(2020, 11, 27);
+  DateTime _currentDate2 = DateTime(2020, 11, 27);
+  String _currentMonth = DateFormat.yMMM().format(DateTime(2020, 11, 27));
+  DateTime _targetDateTime = DateTime(2020, 11, 27);
 //  List<DateTime> _markedDate = [DateTime(2018, 9, 20), DateTime(2018, 10, 11)];
   static Widget _eventIcon = new Container(
     decoration: new BoxDecoration(
@@ -110,7 +110,7 @@ class _Agenda extends State<Agenda> with TickerProviderStateMixin {
         events.forEach((event) => print(event.title));
       },
       weekendTextStyle: TextStyle(
-        color: Colors.red,
+        color: Color(0xff333333),
       ),
       thisMonthDayBorderColor: Colors.grey,
 //          weekDays: null, /// for pass null when you do not want to render weekDays
@@ -126,10 +126,10 @@ class _Agenda extends State<Agenda> with TickerProviderStateMixin {
       markedDateShowIcon: true,
       markedDateIconMaxShown: 2,
       selectedDayTextStyle: TextStyle(
-        color: Colors.yellow,
+        color: Color(0xff333333),
       ),
       todayTextStyle: TextStyle(
-        color: Colors.blue,
+        color: Color(0xffC5EDFC),
       ),
       markedDateIconBuilder: (event) {
         return event.icon;
@@ -137,7 +137,7 @@ class _Agenda extends State<Agenda> with TickerProviderStateMixin {
       minSelectedDate: _currentDate.subtract(Duration(days: 360)),
       maxSelectedDate: _currentDate.add(Duration(days: 360)),
       todayButtonColor: Colors.transparent,
-      todayBorderColor: Colors.green,
+      todayBorderColor: Color(0xffF18C8C),
       markedDateMoreShowTotal:
           true, // null for not showing hidden events indicator
 //          markedDateIconMargin: 9,
@@ -146,7 +146,7 @@ class _Agenda extends State<Agenda> with TickerProviderStateMixin {
 
     /// Example Calendar Carousel without header and custom prev & next button
     _calendarCarouselNoHeader = CalendarCarousel<Event>(
-      todayBorderColor: Colors.green,
+      todayBorderColor: Color(0xff333333),
       onDayPressed: (DateTime date, List<Event> events) {
         this.setState(() => _currentDate2 = date);
         events.forEach((event) => print(event.title));
@@ -154,7 +154,7 @@ class _Agenda extends State<Agenda> with TickerProviderStateMixin {
       daysHaveCircularBorder: true,
       showOnlyCurrentMonthDate: false,
       weekendTextStyle: TextStyle(
-        color: Colors.red,
+        color: Color(0xff333333),
       ),
       thisMonthDayBorderColor: Colors.grey,
       weekFormat: false,
@@ -165,14 +165,14 @@ class _Agenda extends State<Agenda> with TickerProviderStateMixin {
       targetDateTime: _targetDateTime,
       customGridViewPhysics: NeverScrollableScrollPhysics(),
       markedDateCustomShapeBorder:
-          CircleBorder(side: BorderSide(color: Colors.yellow)),
+          CircleBorder(side: BorderSide(color: Color(0xffF18C8C))),
       markedDateCustomTextStyle: TextStyle(
         fontSize: 18,
-        color: Colors.blue,
+        color: Color(0xff333333),
       ),
       showHeader: false,
       todayTextStyle: TextStyle(
-        color: Colors.blue,
+        color: Color(0xff333333),
       ),
       // markedDateShowIcon: true,
       // markedDateIconMaxShown: 2,
@@ -181,18 +181,17 @@ class _Agenda extends State<Agenda> with TickerProviderStateMixin {
       // },
       // markedDateMoreShowTotal:
       //     true,
-      todayButtonColor: Colors.yellow,
-      selectedDayTextStyle: TextStyle(
-        color: Colors.yellow,
-      ),
+      todayButtonColor: Color(0xffF18C8C),
+      selectedDayTextStyle: TextStyle(color: Color(0xff333333)),
       minSelectedDate: _currentDate.subtract(Duration(days: 360)),
+      selectedDayButtonColor: Color(0xffC5EDFC),
       maxSelectedDate: _currentDate.add(Duration(days: 360)),
       prevDaysTextStyle: TextStyle(
         fontSize: 16,
-        color: Colors.pinkAccent,
+        color: Color(0xff333333),
       ),
       inactiveDaysTextStyle: TextStyle(
-        color: Colors.tealAccent,
+        color: Color(0xff333333),
         fontSize: 16,
       ),
       onCalendarChanged: (DateTime date) {
@@ -225,15 +224,23 @@ class _Agenda extends State<Agenda> with TickerProviderStateMixin {
           child: Container(
             decoration: BoxDecoration(
                 border: Border.all(
-                  color: Color(0xffB9B6B6),
+                  color: Color(0xffffffff),
                 ),
-                color: Color(0xffB9B6B6),
-                borderRadius: BorderRadius.all(Radius.circular(15))),
+                color: Color(0xffffffff),
+                borderRadius: BorderRadius.all(Radius.circular(15)),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.25),
+                    spreadRadius: 0,
+                    blurRadius: 4,
+                    offset: Offset(0, 4), // changes position of shadow
+                  ),
+                ]),
             child: Column(
               children: [
                 Container(
                   margin: EdgeInsets.only(
-                    top: 30.0,
+                    top: 5.0,
                     bottom: 1.0,
                     left: 16.0,
                     right: 16.0,
@@ -249,7 +256,11 @@ class _Agenda extends State<Agenda> with TickerProviderStateMixin {
                         ),
                       )),
                       FlatButton(
-                        child: Text('PREV'),
+                        child: FaIcon(
+                          FontAwesomeIcons.solidArrowAltCircleLeft,
+                          color: Color(0xFF0C2231),
+                          size: 25,
+                        ),
                         onPressed: () {
                           setState(() {
                             _targetDateTime = DateTime(_targetDateTime.year,
@@ -260,7 +271,11 @@ class _Agenda extends State<Agenda> with TickerProviderStateMixin {
                         },
                       ),
                       FlatButton(
-                        child: Text('NEXT'),
+                        child: FaIcon(
+                          FontAwesomeIcons.solidArrowAltCircleRight,
+                          color: Color(0xFF0C2231),
+                          size: 25,
+                        ),
                         onPressed: () {
                           setState(() {
                             _targetDateTime = DateTime(_targetDateTime.year,
@@ -289,10 +304,18 @@ class _Agenda extends State<Agenda> with TickerProviderStateMixin {
           child: Container(
               decoration: BoxDecoration(
                   border: Border.all(
-                    color: Color(0xffb9b6b6),
+                    color: Color(0xffffffff),
                   ),
-                  color: Color(0xffb9b6b6),
-                  borderRadius: BorderRadius.all(Radius.circular(5))),
+                  color: Color(0xffffffff),
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.25),
+                      spreadRadius: 0,
+                      blurRadius: 4,
+                      offset: Offset(0, 4), // changes position of shadow
+                    ),
+                  ]),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -318,11 +341,11 @@ class _Agenda extends State<Agenda> with TickerProviderStateMixin {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("Dra. Méndez - Nutricionista",
+                              Text("Dr. José Luis López  - Alergólogo",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       fontSize: 16,
-                                      fontWeight: FontWeight.w300,
+                                      fontWeight: FontWeight.w400,
                                       color: Color(0xff000000))),
                               Container(
                                 width: 280,
@@ -336,19 +359,19 @@ class _Agenda extends State<Agenda> with TickerProviderStateMixin {
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                             fontSize: 16,
-                                            fontWeight: FontWeight.w300,
+                                            fontWeight: FontWeight.w400,
                                             color: Color(0xff000000))),
                                     Text("09:30",
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                             fontSize: 16,
-                                            fontWeight: FontWeight.w300,
+                                            fontWeight: FontWeight.w400,
                                             color: Color(0xff000000))),
                                     Text("Sala 318",
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                             fontSize: 16,
-                                            fontWeight: FontWeight.w300,
+                                            fontWeight: FontWeight.w400,
                                             color: Color(0xff000000)))
                                   ],
                                 ),
@@ -368,16 +391,25 @@ class _Agenda extends State<Agenda> with TickerProviderStateMixin {
                           padding: EdgeInsets.only(top: 15, bottom: 15),
                           decoration: BoxDecoration(
                               border: Border.all(
-                                color: Color(0xffffffff),
+                                color: Color(0xff5DB2E8),
                               ),
                               color: Color(0xffffffff),
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(5))),
+                                  BorderRadius.all(Radius.circular(15)),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.25),
+                                  spreadRadius: 0,
+                                  blurRadius: 4,
+                                  offset: Offset(
+                                      0, 4), // changes position of shadow
+                                ),
+                              ]),
                           child: Center(
                             child: Text("Cancelar",
                                 style: TextStyle(
                                     fontSize: 16,
-                                    fontWeight: FontWeight.bold,
+                                    fontWeight: FontWeight.w700,
                                     color: Color(0xff000000))),
                           ),
                         ),
@@ -386,16 +418,25 @@ class _Agenda extends State<Agenda> with TickerProviderStateMixin {
                           padding: EdgeInsets.only(top: 15, bottom: 15),
                           decoration: BoxDecoration(
                               border: Border.all(
-                                color: Color(0xffffffff),
+                                color: Color(0xff5DB2E8),
                               ),
                               color: Color(0xffffffff),
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(5))),
+                                  BorderRadius.all(Radius.circular(15)),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.25),
+                                  spreadRadius: 0,
+                                  blurRadius: 4,
+                                  offset: Offset(
+                                      0, 4), // changes position of shadow
+                                ),
+                              ]),
                           child: Center(
                             child: Text("Modificar",
                                 style: TextStyle(
                                     fontSize: 16,
-                                    fontWeight: FontWeight.bold,
+                                    fontWeight: FontWeight.w700,
                                     color: Color(0xff000000))),
                           ),
                         ),
@@ -413,17 +454,25 @@ class _Agenda extends State<Agenda> with TickerProviderStateMixin {
             child: Container(
               decoration: BoxDecoration(
                   border: Border.all(
-                    color: Color(0xffb9b6b6),
+                    color: Color(0xffC5EDFC),
                   ),
-                  color: Color(0xffb9b6b6),
-                  borderRadius: BorderRadius.all(Radius.circular(5))),
+                  color: Color(0xffC5EDFC),
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.25),
+                      spreadRadius: 0,
+                      blurRadius: 4,
+                      offset: Offset(0, 4), // changes position of shadow
+                    ),
+                  ]),
               child: Center(
                   child: Text(
                 "Solicitar nueva cita",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.normal,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
                     color: Color(0xff000000)),
               )),
             ),

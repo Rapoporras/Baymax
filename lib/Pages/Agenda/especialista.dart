@@ -151,18 +151,26 @@ class _Especialista extends State<Especialista> with TickerProviderStateMixin {
                 margin: EdgeInsets.only(top: 25, bottom: 25),
                 child: InkWell(
                   child: Container(
-                    height: 80,
+                    height: 70,
                     decoration: BoxDecoration(
                         border: Border.all(
-                          color: Color(0xffB9B6B6),
+                          color: Color(0xffC5EDFC),
                         ),
-                        color: Color(0xffB9B6B6),
-                        borderRadius: BorderRadius.all(Radius.circular(15))),
+                        color: Color(0xffC5EDFC),
+                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.25),
+                            spreadRadius: 0,
+                            blurRadius: 4,
+                            offset: Offset(0, 4), // changes position of shadow
+                          ),
+                        ]),
                     child: Center(
                       child: Text("Solicitar Cita",
                           style: TextStyle(
                               fontSize: 18,
-                              fontWeight: FontWeight.normal,
+                              fontWeight: FontWeight.w400,
                               color: Color(0xff000000))),
                     ),
                   ),
@@ -193,10 +201,25 @@ class _Especialista extends State<Especialista> with TickerProviderStateMixin {
             child: Text("¿Qué tipo de cita necesitas?",
                 style: TextStyle(
                     fontSize: 18,
-                    fontWeight: FontWeight.normal,
+                    fontWeight: FontWeight.w400,
                     color: Color(0xff000000))),
           ),
           Container(
+            margin: EdgeInsets.only(top: 10),
+            decoration: BoxDecoration(
+                border: Border.all(
+                  color: Color(0xffffffff),
+                ),
+                color: Color(0xffffffff),
+                borderRadius: BorderRadius.all(Radius.circular(15)),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.25),
+                    spreadRadius: 0,
+                    blurRadius: 4,
+                    offset: Offset(0, 4), // changes position of shadow
+                  ),
+                ]),
             child: SmartSelect<String>.multiple(
                 title: 'Tipo de citas',
                 placeholder: 'Listado de citas',
@@ -236,6 +259,7 @@ class _Especialista extends State<Especialista> with TickerProviderStateMixin {
       padding: EdgeInsets.only(left: 20, right: 20),
       // height: 80,
       margin: EdgeInsets.only(top: 25, bottom: 25),
+
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -243,10 +267,25 @@ class _Especialista extends State<Especialista> with TickerProviderStateMixin {
             child: Text("¿Qué medico necesitas?",
                 style: TextStyle(
                     fontSize: 18,
-                    fontWeight: FontWeight.normal,
+                    fontWeight: FontWeight.w400,
                     color: Color(0xff000000))),
           ),
           Container(
+            margin: EdgeInsets.only(top: 10),
+            decoration: BoxDecoration(
+                border: Border.all(
+                  color: Color(0xffffffff),
+                ),
+                color: Color(0xffffffff),
+                borderRadius: BorderRadius.all(Radius.circular(15)),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.25),
+                    spreadRadius: 0,
+                    blurRadius: 4,
+                    offset: Offset(0, 4), // changes position of shadow
+                  ),
+                ]),
             child: SmartSelect<String>.multiple(
                 title: 'Medicos',
                 placeholder: 'Listado de Médicos',
@@ -289,31 +328,48 @@ class _Especialista extends State<Especialista> with TickerProviderStateMixin {
             Text("Selecciona fecha y hora",
                 style: TextStyle(
                     fontSize: 18,
-                    fontWeight: FontWeight.normal,
+                    fontWeight: FontWeight.w400,
                     color: Color(0xff000000))),
-            DateTimePicker(
-              type: DateTimePickerType.dateTimeSeparate,
-              dateMask: 'd MMM, yyyy',
-              initialValue: DateTime.now().toString(),
-              firstDate: DateTime(2000),
-              lastDate: DateTime(2100),
-              icon: Icon(Icons.event),
-              dateLabelText: 'Date',
-              timeLabelText: "Hour",
-              selectableDayPredicate: (date) {
-                // Disable weekend days to select from the calendar
-                if (date.weekday == 6 || date.weekday == 7) {
-                  return false;
-                }
+            Container(
+              margin: EdgeInsets.only(top: 10),
+              decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Color(0xffffffff),
+                  ),
+                  color: Color(0xffffffff),
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.25),
+                      spreadRadius: 0,
+                      blurRadius: 4,
+                      offset: Offset(0, 4), // changes position of shadow
+                    ),
+                  ]),
+              child: DateTimePicker(
+                type: DateTimePickerType.dateTimeSeparate,
+                dateMask: 'd MMM, yyyy',
+                initialValue: DateTime.now().toString(),
+                firstDate: DateTime(2000),
+                lastDate: DateTime(2100),
+                icon: Icon(Icons.event),
+                dateLabelText: 'Date',
+                timeLabelText: "Hour",
+                selectableDayPredicate: (date) {
+                  // Disable weekend days to select from the calendar
+                  if (date.weekday == 6 || date.weekday == 7) {
+                    return false;
+                  }
 
-                return true;
-              },
-              onChanged: (val) => print(val),
-              validator: (val) {
-                print(val);
-                return null;
-              },
-              onSaved: (val) => print(val),
+                  return true;
+                },
+                onChanged: (val) => print(val),
+                validator: (val) {
+                  print(val);
+                  return null;
+                },
+                onSaved: (val) => print(val),
+              ),
             ),
           ],
         ));

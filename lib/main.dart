@@ -38,7 +38,17 @@ class _BaymaxApp extends State<BaymaxApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Firebase Example App',
-      theme: ThemeData.light(),
+      theme: ThemeData(
+        // Define the default brightness and colors.
+        brightness: Brightness.light,
+        primaryColor: Color(0xff5DB2E8),
+        accentColor: Color(0xffC5EDFC),
+        backgroundColor: Color(0xffF6F6F6),
+        dialogBackgroundColor: Color(0xffF6F6F6),
+
+        // Define the default font family.
+        fontFamily: 'Roboto',
+      ),
       darkTheme: ThemeData.dark(),
       themeMode: currentTheme.currentTheme(),
       debugShowCheckedModeBanner: false,

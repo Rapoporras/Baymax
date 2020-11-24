@@ -14,16 +14,23 @@ class Home extends StatefulWidget {
 
 class _Home extends State<Home> with TickerProviderStateMixin {
   // String _phoneNumber;
-  String provincia = "Murcia";
+  String provincia = "Andalucia";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Bienvenido"),
+          title: Text(
+            "Bienvenido",
+            style: TextStyle(
+                color: Color(0xff0c2231),
+                fontSize: 22,
+                fontWeight: FontWeight.w700),
+          ),
           actions: <Widget>[
             IconButton(
               icon: new Icon(Icons.help),
+              color: Color(0xff0c2231),
               onPressed: () => {
                 Navigator.of(context).push(
                   MaterialPageRoute(
@@ -50,32 +57,42 @@ class _Home extends State<Home> with TickerProviderStateMixin {
 
   Widget barraInfo() {
     return Container(
-      height: 80,
+      height: 60,
       decoration: BoxDecoration(
-          border: Border.all(
-            color: Color(0xffb9b6b6),
+        border: Border.all(
+          color: Color(0xffffffff),
+        ),
+        color: Color(0xffffffff),
+        borderRadius: BorderRadius.all(Radius.circular(5)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.25),
+            spreadRadius: 0,
+            blurRadius: 4,
+            offset: Offset(0, 4), // changes position of shadow
           ),
-          color: Color(0xffb9b6b6),
-          borderRadius: BorderRadius.all(Radius.circular(5))),
+        ],
+      ),
       margin: EdgeInsets.all(20),
-      padding: EdgeInsets.only(top: 15, bottom: 15),
+      padding: EdgeInsets.only(top: 5, bottom: 5),
       width: MediaQuery.of(context).size.width,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
-            width: 50,
+            width: 40,
             // color: Colors.green,
-            height: 80,
+            height: 40,
             // margin: EdgeInsets.only(bottom: 20),
             child: FaIcon(
               FontAwesomeIcons.userCircle,
               color: Color(0xFF000000),
-              size: 50,
+              size: 40,
             ),
           ),
           Container(
-            height: 80,
+            height: 50,
             child: Center(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -84,25 +101,25 @@ class _Home extends State<Home> with TickerProviderStateMixin {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: 16,
-                          fontWeight: FontWeight.w300,
+                          fontWeight: FontWeight.w400,
                           color: Color(0xff000000))),
                   Text("Anemia y sobrepeso",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: 16,
-                          fontWeight: FontWeight.w300,
+                          fontWeight: FontWeight.w400,
                           color: Color(0xff000000)))
                 ],
               ),
             ),
           ),
           Container(
-            height: 80,
+            height: 50,
             child: Text("13/06/1987",
                 textAlign: TextAlign.right,
                 style: TextStyle(
                     fontSize: 16,
-                    fontWeight: FontWeight.w300,
+                    fontWeight: FontWeight.w400,
                     color: Color(0xff000000))),
           )
         ],
@@ -113,18 +130,20 @@ class _Home extends State<Home> with TickerProviderStateMixin {
   void numeroCovid(provincia) {
     FirebaseFirestore.instance
         .collection('numero_covid')
-        .doc("9UCx7E9S2V22x9UQC016")
+        .doc("3AG6qws1OEJbM8wCAloR")
         .get()
         .then((DocumentSnapshot documentSnapshot) {
       // print(documentSnapshot.data()["Madrid"]);
       String phone = documentSnapshot.data()[provincia];
+      // print(phone);
+      // print(provincia);
       launch('tel://$phone');
     });
   }
 
   Widget barraMas() {
     return Container(
-      height: 120,
+      height: 110,
       padding: EdgeInsets.only(left: 20, right: 20),
       width: MediaQuery.of(context).size.width,
       child: Column(
@@ -132,102 +151,174 @@ class _Home extends State<Home> with TickerProviderStateMixin {
         children: [
           Container(
             height: 20,
-            margin: EdgeInsets.only(bottom: 5),
+            margin: EdgeInsets.only(bottom: 10),
             padding: EdgeInsets.only(left: 5),
             child: Text("Más",
                 style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.normal,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w400,
                     color: Color(0xff000000))),
           ),
           Container(
-            height: 90,
+            height: 80,
             decoration: BoxDecoration(
                 border: Border.all(
-                  color: Color(0xffb9b6b6),
+                  color: Color(0xffffffff),
                 ),
-                color: Color(0xffb9b6b6),
-                borderRadius: BorderRadius.all(Radius.circular(5))),
+                color: Color(0xffffffff),
+                borderRadius: BorderRadius.all(Radius.circular(5)),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.25),
+                    spreadRadius: 0,
+                    blurRadius: 4,
+                    offset: Offset(0, 4), // changes position of shadow
+                  ),
+                ]),
             // margin: EdgeInsets.all(20),
             padding: EdgeInsets.only(top: 14, bottom: 14),
             width: MediaQuery.of(context).size.width,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
               children: [
                 Container(
                     height: 55,
                     width: 80,
-                    padding: EdgeInsets.only(
-                        left: 15, right: 15, top: 10, bottom: 10),
+                    margin: EdgeInsets.only(left: 5, right: 5),
+                    padding:
+                        EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 5),
                     decoration: BoxDecoration(
                         border: Border.all(
-                          color: Color(0xffffffff),
+                          color: Color(0xff5DB2E8),
                         ),
                         color: Color(0xffffffff),
-                        borderRadius: BorderRadius.all(Radius.circular(5))),
+                        borderRadius: BorderRadius.all(Radius.circular(5)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.25),
+                            spreadRadius: 0,
+                            blurRadius: 4,
+                            offset: Offset(0, 4), // changes position of shadow
+                          ),
+                        ]),
                     child: Center(
                       child: Text("Mis pastillas",
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.normal,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w300,
                               color: Color(0xff000000))),
                     )),
                 Container(
                     height: 55,
                     width: 80,
-                    padding: EdgeInsets.only(
-                        left: 15, right: 15, top: 10, bottom: 10),
+                    margin: EdgeInsets.only(left: 5, right: 5),
+                    padding:
+                        EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 5),
                     decoration: BoxDecoration(
                         border: Border.all(
-                          color: Color(0xffffffff),
+                          color: Color(0xff5DB2E8),
                         ),
                         color: Color(0xffffffff),
-                        borderRadius: BorderRadius.all(Radius.circular(5))),
+                        borderRadius: BorderRadius.all(Radius.circular(5)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.25),
+                            spreadRadius: 0,
+                            blurRadius: 4,
+                            offset: Offset(0, 4), // changes position of shadow
+                          ),
+                        ]),
                     child: Center(
                       child: Text("Mis recetas",
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.normal,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w300,
                               color: Color(0xff000000))),
                     )),
                 Container(
                     height: 55,
                     width: 80,
-                    padding: EdgeInsets.only(
-                        left: 15, right: 15, top: 10, bottom: 10),
+                    margin: EdgeInsets.only(left: 5, right: 5),
+                    padding:
+                        EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 5),
                     decoration: BoxDecoration(
                         border: Border.all(
-                          color: Color(0xffffffff),
+                          color: Color(0xff5DB2E8),
                         ),
                         color: Color(0xffffffff),
-                        borderRadius: BorderRadius.all(Radius.circular(5))),
+                        borderRadius: BorderRadius.all(Radius.circular(5)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.25),
+                            spreadRadius: 0,
+                            blurRadius: 4,
+                            offset: Offset(0, 4), // changes position of shadow
+                          ),
+                        ]),
                     child: Center(
                       child: Text("Mis pruebas",
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.normal,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w300,
                               color: Color(0xff000000))),
                     )),
                 Container(
                     height: 55,
                     width: 80,
-                    padding: EdgeInsets.only(
-                        left: 15, right: 15, top: 10, bottom: 10),
+                    margin: EdgeInsets.only(left: 5, right: 5),
+                    padding:
+                        EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 5),
                     decoration: BoxDecoration(
                         border: Border.all(
-                          color: Color(0xffffffff),
+                          color: Color(0xff5DB2E8),
                         ),
                         color: Color(0xffffffff),
-                        borderRadius: BorderRadius.all(Radius.circular(5))),
+                        borderRadius: BorderRadius.all(Radius.circular(5)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.25),
+                            spreadRadius: 0,
+                            blurRadius: 4,
+                            offset: Offset(0, 4), // changes position of shadow
+                          ),
+                        ]),
                     child: Center(
                       child: Text("Mi dieta",
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.normal,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w300,
+                              color: Color(0xff000000))),
+                    )),
+                Container(
+                    height: 55,
+                    width: 80,
+                    margin: EdgeInsets.only(left: 5, right: 5),
+                    padding:
+                        EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 5),
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Color(0xff5DB2E8),
+                        ),
+                        color: Color(0xffffffff),
+                        borderRadius: BorderRadius.all(Radius.circular(5)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.25),
+                            spreadRadius: 0,
+                            blurRadius: 4,
+                            offset: Offset(0, 4), // changes position of shadow
+                          ),
+                        ]),
+                    child: Center(
+                      child: Text("Videos",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w300,
                               color: Color(0xff000000))),
                     )),
               ],
@@ -240,7 +331,7 @@ class _Home extends State<Home> with TickerProviderStateMixin {
 
   Widget comoEstas() {
     return Container(
-      height: 180,
+      height: 160,
       padding: EdgeInsets.only(left: 20, right: 20),
       width: MediaQuery.of(context).size.width,
       child: Column(
@@ -253,17 +344,25 @@ class _Home extends State<Home> with TickerProviderStateMixin {
             child: Text("¿Como te encuentras hoy?",
                 style: TextStyle(
                     fontSize: 18,
-                    fontWeight: FontWeight.normal,
+                    fontWeight: FontWeight.w400,
                     color: Color(0xff000000))),
           ),
           Container(
-            height: 100,
+            height: 80,
             decoration: BoxDecoration(
                 border: Border.all(
-                  color: Color(0xffb9b6b6),
+                  color: Color(0xffffffff),
                 ),
-                color: Color(0xffb9b6b6),
-                borderRadius: BorderRadius.all(Radius.circular(5))),
+                color: Color(0xffffffff),
+                borderRadius: BorderRadius.all(Radius.circular(5)),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.25),
+                    spreadRadius: 0,
+                    blurRadius: 4,
+                    offset: Offset(0, 4), // changes position of shadow
+                  ),
+                ]),
             // margin: EdgeInsets.all(20),
             padding: EdgeInsets.only(top: 10, bottom: 10),
             width: MediaQuery.of(context).size.width,
@@ -271,34 +370,43 @@ class _Home extends State<Home> with TickerProviderStateMixin {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Container(
-                  height: 75,
+                  height: 55,
                   width: 80,
+                  margin: EdgeInsets.only(left: 5, right: 5),
                   padding:
-                      EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
+                      EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 5),
                   decoration: BoxDecoration(
                       border: Border.all(
-                        color: Color(0xffffffff),
+                        color: Color(0xff5DB2E8),
                       ),
                       color: Color(0xffffffff),
-                      borderRadius: BorderRadius.all(Radius.circular(5))),
+                      borderRadius: BorderRadius.all(Radius.circular(5)),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.25),
+                          spreadRadius: 0,
+                          blurRadius: 4,
+                          offset: Offset(0, 4), // changes position of shadow
+                        ),
+                      ]),
                   child: Center(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         FaIcon(
                           FontAwesomeIcons.solidGrinBeam,
-                          color: Color(0xFF000000),
-                          size: 25,
+                          color: Color(0xFFFFA1DF),
+                          size: 18,
                         ),
                         Container(
-                            height: 25,
+                            height: 20,
                             // margin: EdgeInsets.only(left: 10),
                             child: Center(
                               child: Text("Curado",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       fontSize: 16,
-                                      fontWeight: FontWeight.normal,
+                                      fontWeight: FontWeight.w300,
                                       color: Color(0xff000000))),
                             )),
                       ],
@@ -306,34 +414,43 @@ class _Home extends State<Home> with TickerProviderStateMixin {
                   ),
                 ),
                 Container(
-                  height: 75,
+                  height: 55,
                   width: 80,
+                  margin: EdgeInsets.only(left: 5, right: 5),
                   padding:
-                      EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
+                      EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 5),
                   decoration: BoxDecoration(
                       border: Border.all(
-                        color: Color(0xffffffff),
+                        color: Color(0xff5DB2E8),
                       ),
                       color: Color(0xffffffff),
-                      borderRadius: BorderRadius.all(Radius.circular(5))),
+                      borderRadius: BorderRadius.all(Radius.circular(5)),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.25),
+                          spreadRadius: 0,
+                          blurRadius: 4,
+                          offset: Offset(0, 4), // changes position of shadow
+                        ),
+                      ]),
                   child: Center(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         FaIcon(
                           FontAwesomeIcons.solidSmile,
-                          color: Color(0xFF000000),
-                          size: 25,
+                          color: Color(0xFF5DB2E8),
+                          size: 18,
                         ),
                         Container(
-                            height: 25,
+                            height: 20,
                             // margin: EdgeInsets.only(left: 10),
                             child: Center(
                               child: Text("Mejor",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       fontSize: 16,
-                                      fontWeight: FontWeight.normal,
+                                      fontWeight: FontWeight.w300,
                                       color: Color(0xff000000))),
                             )),
                       ],
@@ -341,34 +458,43 @@ class _Home extends State<Home> with TickerProviderStateMixin {
                   ),
                 ),
                 Container(
-                  height: 75,
+                  height: 55,
                   width: 80,
+                  margin: EdgeInsets.only(left: 5, right: 5),
                   padding:
-                      EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
+                      EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 5),
                   decoration: BoxDecoration(
                       border: Border.all(
-                        color: Color(0xffffffff),
+                        color: Color(0xff5DB2E8),
                       ),
                       color: Color(0xffffffff),
-                      borderRadius: BorderRadius.all(Radius.circular(5))),
+                      borderRadius: BorderRadius.all(Radius.circular(5)),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.25),
+                          spreadRadius: 0,
+                          blurRadius: 4,
+                          offset: Offset(0, 4), // changes position of shadow
+                        ),
+                      ]),
                   child: Center(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         FaIcon(
                           FontAwesomeIcons.solidMeh,
-                          color: Color(0xFF000000),
-                          size: 25,
+                          color: Color(0xFFF3C294),
+                          size: 18,
                         ),
                         Container(
-                            height: 25,
+                            height: 20,
                             // margin: EdgeInsets.only(left: 10),
                             child: Center(
                               child: Text("Igual",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       fontSize: 16,
-                                      fontWeight: FontWeight.normal,
+                                      fontWeight: FontWeight.w300,
                                       color: Color(0xff000000))),
                             )),
                       ],
@@ -376,34 +502,43 @@ class _Home extends State<Home> with TickerProviderStateMixin {
                   ),
                 ),
                 Container(
-                  height: 75,
+                  height: 55,
                   width: 80,
+                  margin: EdgeInsets.only(left: 5, right: 5),
                   padding:
-                      EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
+                      EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 5),
                   decoration: BoxDecoration(
                       border: Border.all(
-                        color: Color(0xffffffff),
+                        color: Color(0xff5DB2E8),
                       ),
                       color: Color(0xffffffff),
-                      borderRadius: BorderRadius.all(Radius.circular(5))),
+                      borderRadius: BorderRadius.all(Radius.circular(5)),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.25),
+                          spreadRadius: 0,
+                          blurRadius: 4,
+                          offset: Offset(0, 4), // changes position of shadow
+                        ),
+                      ]),
                   child: Center(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         FaIcon(
                           FontAwesomeIcons.solidFrown,
-                          color: Color(0xFF000000),
-                          size: 25,
+                          color: Color(0xFFF18C8C),
+                          size: 18,
                         ),
                         Container(
-                            height: 25,
+                            height: 20,
                             // margin: EdgeInsets.only(left: 10),
                             child: Center(
                               child: Text("Peor",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       fontSize: 16,
-                                      fontWeight: FontWeight.normal,
+                                      fontWeight: FontWeight.w300,
                                       color: Color(0xff000000))),
                             )),
                       ],
@@ -418,11 +553,24 @@ class _Home extends State<Home> with TickerProviderStateMixin {
             margin: EdgeInsets.only(top: 10),
             decoration: BoxDecoration(
                 border: Border.all(
-                  color: Color(0xffC4C4C4),
+                  color: Color(0xffC5EDFC),
                 ),
-                color: Color(0xffC4C4C4),
-                borderRadius: BorderRadius.all(Radius.circular(5))),
-            child: Text("Ver evolución"),
+                color: Color(0xffC5EDFC),
+                borderRadius: BorderRadius.all(Radius.circular(5)),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.25),
+                    spreadRadius: 0,
+                    blurRadius: 4,
+                    offset: Offset(0, 4), // changes position of shadow
+                  ),
+                ]),
+            child: Text("Ver evolución",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w300,
+                  color: Color(0xff000000),
+                )),
           )
         ],
       ),
@@ -432,7 +580,7 @@ class _Home extends State<Home> with TickerProviderStateMixin {
   Widget proximaCita() {
     Widget cita;
     bool _haycita = true;
-    String _tipoCita = "online";
+    String _tipoCita = "presencial";
     if (_haycita == false) {
       cita = Container(
         height: 120,
@@ -448,25 +596,32 @@ class _Home extends State<Home> with TickerProviderStateMixin {
               child: Text("Mi próxima cita",
                   style: TextStyle(
                       fontSize: 18,
-                      fontWeight: FontWeight.normal,
+                      fontWeight: FontWeight.w400,
                       color: Color(0xff000000))),
             ),
             Container(
-                height: 80,
+                height: 70,
                 decoration: BoxDecoration(
                     border: Border.all(
-                      color: Color(0xffb9b6b6),
+                      color: Color(0xffffffff),
                     ),
-                    color: Color(0xffb9b6b6),
-                    borderRadius: BorderRadius.all(Radius.circular(5))),
-                // margin: EdgeInsets.all(20),
+                    color: Color(0xffffffff),
+                    borderRadius: BorderRadius.all(Radius.circular(5)),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.25),
+                        spreadRadius: 0,
+                        blurRadius: 4,
+                        offset: Offset(0, 4), // changes position of shadow
+                      ),
+                    ]),
                 padding: EdgeInsets.only(top: 20, bottom: 20),
                 width: MediaQuery.of(context).size.width,
                 child: Center(
                   child: Text("No hay citas programadas",
                       style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.normal,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
                           color: Color(0xff000000))),
                 ))
           ],
@@ -488,17 +643,25 @@ class _Home extends State<Home> with TickerProviderStateMixin {
                 child: Text("Mi próxima cita",
                     style: TextStyle(
                         fontSize: 18,
-                        fontWeight: FontWeight.normal,
+                        fontWeight: FontWeight.w400,
                         color: Color(0xff000000))),
               ),
               Container(
-                height: 80,
+                height: 70,
                 decoration: BoxDecoration(
                     border: Border.all(
-                      color: Color(0xffb9b6b6),
+                      color: Color(0xffffffff),
                     ),
-                    color: Color(0xffb9b6b6),
-                    borderRadius: BorderRadius.all(Radius.circular(5))),
+                    color: Color(0xffffffff),
+                    borderRadius: BorderRadius.all(Radius.circular(5)),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.25),
+                        spreadRadius: 0,
+                        blurRadius: 4,
+                        offset: Offset(0, 4), // changes position of shadow
+                      ),
+                    ]),
                 // margin: EdgeInsets.all(20),
 
                 width: MediaQuery.of(context).size.width,
@@ -506,15 +669,15 @@ class _Home extends State<Home> with TickerProviderStateMixin {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      height: 80,
-                      padding: EdgeInsets.only(top: 20, bottom: 20, left: 15),
+                      height: 70,
+                      padding: EdgeInsets.only(top: 5, bottom: 5, left: 15),
                       child: Center(
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             FaIcon(
                               FontAwesomeIcons.solidCalendarAlt,
-                              color: Color(0xFF000000),
+                              color: Color(0xFF5DB2E8),
                               size: 30,
                             ),
                             Container(
@@ -525,7 +688,7 @@ class _Home extends State<Home> with TickerProviderStateMixin {
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize: 16,
-                                          fontWeight: FontWeight.normal,
+                                          fontWeight: FontWeight.w400,
                                           color: Color(0xff000000))),
                                 )),
                           ],
@@ -533,15 +696,15 @@ class _Home extends State<Home> with TickerProviderStateMixin {
                       ),
                     ),
                     Container(
-                      height: 80,
-                      padding: EdgeInsets.only(top: 20, bottom: 20),
+                      height: 70,
+                      padding: EdgeInsets.only(top: 5, bottom: 5),
                       child: Center(
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             FaIcon(
                               FontAwesomeIcons.solidClock,
-                              color: Color(0xFF000000),
+                              color: Color(0xFF5DB2E8),
                               size: 30,
                             ),
                             Container(
@@ -552,7 +715,7 @@ class _Home extends State<Home> with TickerProviderStateMixin {
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize: 16,
-                                          fontWeight: FontWeight.normal,
+                                          fontWeight: FontWeight.w400,
                                           color: Color(0xff000000))),
                                 )),
                           ],
@@ -562,12 +725,19 @@ class _Home extends State<Home> with TickerProviderStateMixin {
                     Container(
                       // margin: EdgeInsets.only(left: ),
                       width: 120,
-                      height: 80,
-                      color: Color(0xff5A5A5A),
+                      height: 70,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Color(0xFF5DB2E8),
+                        ),
+                        color: Color(0xFF5DB2E8),
+                        borderRadius: BorderRadius.all(Radius.circular(5)),
+                      ),
+
                       child: Center(
                         child: FaIcon(
                           FontAwesomeIcons.video,
-                          color: Color(0xFFffffff),
+                          color: Color(0xFF0C2231),
                           size: 30,
                         ),
                       ),
@@ -593,17 +763,25 @@ class _Home extends State<Home> with TickerProviderStateMixin {
                 child: Text("Mi próxima cita",
                     style: TextStyle(
                         fontSize: 18,
-                        fontWeight: FontWeight.normal,
+                        fontWeight: FontWeight.w400,
                         color: Color(0xff000000))),
               ),
               Container(
-                height: 80,
+                height: 70,
                 decoration: BoxDecoration(
                     border: Border.all(
-                      color: Color(0xffb9b6b6),
+                      color: Color(0xffffffff),
                     ),
-                    color: Color(0xffb9b6b6),
-                    borderRadius: BorderRadius.all(Radius.circular(5))),
+                    color: Color(0xffffffff),
+                    borderRadius: BorderRadius.all(Radius.circular(5)),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.25),
+                        spreadRadius: 0,
+                        blurRadius: 4,
+                        offset: Offset(0, 4), // changes position of shadow
+                      ),
+                    ]),
                 // margin: EdgeInsets.all(20),
                 padding: EdgeInsets.only(top: 20, bottom: 20),
                 width: MediaQuery.of(context).size.width,
@@ -611,25 +789,25 @@ class _Home extends State<Home> with TickerProviderStateMixin {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Container(
-                      height: 80,
+                      height: 70,
                       child: Center(
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             FaIcon(
                               FontAwesomeIcons.solidCalendarAlt,
-                              color: Color(0xFF000000),
+                              color: Color(0xFF5DB2E8),
                               size: 30,
                             ),
                             Container(
-                                height: 80,
+                                height: 70,
                                 margin: EdgeInsets.only(left: 10),
                                 child: Center(
                                   child: Text("11/11/20",
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize: 16,
-                                          fontWeight: FontWeight.normal,
+                                          fontWeight: FontWeight.w400,
                                           color: Color(0xff000000))),
                                 )),
                           ],
@@ -637,25 +815,25 @@ class _Home extends State<Home> with TickerProviderStateMixin {
                       ),
                     ),
                     Container(
-                      height: 80,
+                      height: 70,
                       child: Center(
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             FaIcon(
                               FontAwesomeIcons.solidClock,
-                              color: Color(0xFF000000),
+                              color: Color(0xFF5DB2E8),
                               size: 30,
                             ),
                             Container(
-                                height: 80,
+                                height: 70,
                                 margin: EdgeInsets.only(left: 10),
                                 child: Center(
                                   child: Text("09:30",
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize: 16,
-                                          fontWeight: FontWeight.normal,
+                                          fontWeight: FontWeight.w400,
                                           color: Color(0xff000000))),
                                 )),
                           ],
@@ -663,25 +841,25 @@ class _Home extends State<Home> with TickerProviderStateMixin {
                       ),
                     ),
                     Container(
-                      height: 80,
+                      height: 70,
                       child: Center(
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             FaIcon(
                               FontAwesomeIcons.mapMarkerAlt,
-                              color: Color(0xFF000000),
+                              color: Color(0xFF5DB2E8),
                               size: 30,
                             ),
                             Container(
-                                height: 80,
+                                height: 70,
                                 margin: EdgeInsets.only(left: 10),
                                 child: Center(
                                   child: Text("Sala 318",
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize: 16,
-                                          fontWeight: FontWeight.normal,
+                                          fontWeight: FontWeight.w400,
                                           color: Color(0xff000000))),
                                 )),
                           ],
@@ -704,6 +882,7 @@ class _Home extends State<Home> with TickerProviderStateMixin {
       width: MediaQuery.of(context).size.width,
       height: 130,
       // color: Colors.red,
+      margin: EdgeInsets.only(top: 15),
       padding: EdgeInsets.only(left: 20, right: 20, top: 10),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -714,76 +893,99 @@ class _Home extends State<Home> with TickerProviderStateMixin {
             width: 100,
             decoration: BoxDecoration(
                 border: Border.all(
-                  color: Color(0xffb9b6b6),
+                  color: Color(0xffF7BDBD),
                 ),
-                color: Color(0xffb9b6b6),
-                borderRadius: BorderRadius.all(Radius.circular(5))),
+                color: Color(0xffF7BDBD),
+                borderRadius: BorderRadius.all(Radius.circular(5)),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.25),
+                    spreadRadius: 0,
+                    blurRadius: 4,
+                    offset: Offset(0, 4), // changes position of shadow
+                  ),
+                ]),
             child: Center(
               child: Stack(
-                alignment: Alignment(0.0, 0.0),
+                alignment: Alignment(0.8, -1),
                 children: [
                   FaIcon(
                     FontAwesomeIcons.hospitalUser,
-                    color: Color(0xFF000000).withOpacity(0.1),
-                    size: 45,
+                    color: Color(0xFFffffff).withOpacity(0.63),
+                    size: 30,
                   ),
-                  Text("Chat Urgencias",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w300,
-                          color: Color(0xff000000))),
+                  Container(
+                    width: 100,
+                    child: Text("Chat\nUrgencias",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w700,
+                            color: Color(0xff000000))),
+                  )
                 ],
               ),
             ),
           ),
-          Container(
-            height: 58,
-            width: 100,
-            decoration: BoxDecoration(
-                border: Border.all(
-                  color: Color(0xffb9b6b6),
+          InkWell(
+            child: Container(
+              height: 58,
+              width: 100,
+              decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Color(0xffF3C294),
+                  ),
+                  color: Color(0xffF3C294),
+                  borderRadius: BorderRadius.all(Radius.circular(5))),
+              margin: EdgeInsets.only(right: 15, left: 15),
+              child: Center(
+                  child: Stack(alignment: Alignment(0.8, -1), children: [
+                FaIcon(
+                  FontAwesomeIcons.shieldVirus,
+                  color: Color(0xFFffffff).withOpacity(0.63),
+                  size: 30,
                 ),
-                color: Color(0xffb9b6b6),
-                borderRadius: BorderRadius.all(Radius.circular(5))),
-            margin: EdgeInsets.only(right: 15, left: 15),
-            child: Center(
-                child: Stack(alignment: Alignment(0.0, 0.0), children: [
-              FaIcon(
-                FontAwesomeIcons.shieldVirus,
-                color: Color(0xFF000000).withOpacity(0.1),
-                size: 45,
-              ),
-              Text("Botón Covid",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w300,
-                      color: Color(0xff000000))),
-            ])),
+                Container(
+                  width: 100,
+                  child: Text("Botón\nCOVID",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w700,
+                          color: Color(0xff000000))),
+                )
+              ])),
+            ),
+            onTap: () {
+              numeroCovid(provincia);
+            },
           ),
           Container(
             height: 58,
             width: 100,
             decoration: BoxDecoration(
                 border: Border.all(
-                  color: Color(0xffb9b6b6),
+                  color: Color(0xffC5EDFC),
                 ),
-                color: Color(0xffb9b6b6),
+                color: Color(0xffC5EDFC),
                 borderRadius: BorderRadius.all(Radius.circular(5))),
             child: Center(
-                child: Stack(alignment: Alignment(0.0, 0.0), children: [
+                child: Stack(alignment: Alignment(0.8, -1), children: [
               FaIcon(
                 FontAwesomeIcons.solidCalendarAlt,
-                color: Color(0xFF000000).withOpacity(0.1),
-                size: 45,
+                color: Color(0xFFffffff).withOpacity(0.63),
+                size: 30,
               ),
-              Text("Cita previa",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w300,
-                      color: Color(0xff000000))),
+              Container(
+                  width: 100,
+                  child: Text(
+                    "Cita\nprevia",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w700,
+                        color: Color(0xff000000)),
+                  )),
             ])),
           )
         ],

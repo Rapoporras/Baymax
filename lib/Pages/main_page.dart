@@ -43,9 +43,9 @@ class _MainPage extends State<MainPage> with TickerProviderStateMixin {
       ),
       bottomNavigationBar: FABBottomAppBar(
         centerItemText: 'Tarjeta',
-        color: Color(0xff000000),
-        backgroundColor: Color(0xffB9B6B6),
-        selectedColor: Colors.blue,
+        color: Color(0xff0C2231),
+        backgroundColor: Color(0xffFFFFFF),
+        selectedColor: Color(0xff5DB2E8),
         notchedShape: CircularNotchedRectangle(),
         onTabSelected: _selectedTab,
         items: [
@@ -71,10 +71,10 @@ class _MainPage extends State<MainPage> with TickerProviderStateMixin {
           currentTheme.switchTheme();
         },
         tooltip: 'Tarjeta',
-        backgroundColor: Colors.blue,
+        backgroundColor: Color(0xff5DB2E8),
         child: FaIcon(
           FontAwesomeIcons.qrcode,
-          color: Color(0xFFffffff),
+          color: Color(0xFF0C2231),
         ),
         elevation: 2.0,
       ), // This trailing comma makes auto-formatting nicer for build methods.

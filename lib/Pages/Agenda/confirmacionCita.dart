@@ -44,7 +44,7 @@ class _ConfirmacionCita extends State<ConfirmacionCita>
             Text("Confirmar la cita",
                 style: TextStyle(
                     fontSize: 18,
-                    fontWeight: FontWeight.normal,
+                    fontWeight: FontWeight.w400,
                     color: Color(0xff000000))),
             Container(
               // padding: EdgeInsets.only(left: 20, right: 20),
@@ -54,10 +54,18 @@ class _ConfirmacionCita extends State<ConfirmacionCita>
                   padding: EdgeInsets.only(bottom: 20, top: 10),
                   decoration: BoxDecoration(
                       border: Border.all(
-                        color: Color(0xffB9B6B6),
+                        color: Color(0xffffffff),
                       ),
-                      color: Color(0xffB9B6B6),
-                      borderRadius: BorderRadius.all(Radius.circular(15))),
+                      color: Color(0xffffffff),
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.25),
+                          spreadRadius: 0,
+                          blurRadius: 4,
+                          offset: Offset(0, 4), // changes position of shadow
+                        ),
+                      ]),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -87,13 +95,13 @@ class _ConfirmacionCita extends State<ConfirmacionCita>
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize: 16,
-                                          fontWeight: FontWeight.normal,
+                                          fontWeight: FontWeight.w300,
                                           color: Color(0xff000000))),
                                   Text("Hospital San Camilo",
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize: 16,
-                                          fontWeight: FontWeight.normal,
+                                          fontWeight: FontWeight.w300,
                                           color: Color(0xff000000))),
                                   Container(
                                     width: 280,
@@ -106,7 +114,7 @@ class _ConfirmacionCita extends State<ConfirmacionCita>
                                       children: [
                                         FaIcon(
                                           FontAwesomeIcons.solidCalendarAlt,
-                                          color: Color(0xFF000000),
+                                          color: Color(0xFF5DB2E8),
                                           size: 16,
                                         ),
                                         Container(
@@ -116,12 +124,12 @@ class _ConfirmacionCita extends State<ConfirmacionCita>
                                               textAlign: TextAlign.left,
                                               style: TextStyle(
                                                   fontSize: 16,
-                                                  fontWeight: FontWeight.normal,
+                                                  fontWeight: FontWeight.w300,
                                                   color: Color(0xff000000))),
                                         ),
                                         FaIcon(
                                           FontAwesomeIcons.solidClock,
-                                          color: Color(0xFF000000),
+                                          color: Color(0xFF5DB2E8),
                                           size: 16,
                                         ),
                                         Container(
@@ -131,7 +139,7 @@ class _ConfirmacionCita extends State<ConfirmacionCita>
                                               textAlign: TextAlign.left,
                                               style: TextStyle(
                                                   fontSize: 16,
-                                                  fontWeight: FontWeight.normal,
+                                                  fontWeight: FontWeight.w300,
                                                   color: Color(0xff000000))),
                                         ),
                                       ],
@@ -150,16 +158,25 @@ class _ConfirmacionCita extends State<ConfirmacionCita>
                             padding: EdgeInsets.all(5),
                             decoration: BoxDecoration(
                                 border: Border.all(
-                                  color: Color(0xffffffff),
+                                  color: Color(0xffF6F6F6),
                                 ),
-                                color: Color(0xffffffff),
+                                color: Color(0xffF6F6F6),
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(5))),
+                                    BorderRadius.all(Radius.circular(15)),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withOpacity(0.25),
+                                    spreadRadius: 0,
+                                    blurRadius: 4,
+                                    offset: Offset(
+                                        0, 4), // changes position of shadow
+                                  ),
+                                ]),
                             child: TextField(
                               maxLines: 10,
                               style: TextStyle(
                                   color: Colors.black,
-                                  fontWeight: FontWeight.normal),
+                                  fontWeight: FontWeight.w400),
                               decoration: InputDecoration(
                                   fillColor: Colors.black,
                                   hintText:
@@ -180,13 +197,13 @@ class _ConfirmacionCita extends State<ConfirmacionCita>
                           "Cita Online",
                           style: TextStyle(
                               // backgroundColor: Colors.white,
-                              fontWeight: FontWeight.normal,
+                              fontWeight: FontWeight.w400,
                               color: Colors.black),
                         ),
                         onChanged: (val) {
                           setSelectedRadioTile(val);
                         },
-                        activeColor: Colors.red,
+                        activeColor: Color(0xff5DB2E8),
                         // selected: true,
                       ),
                       RadioListTile(
@@ -196,48 +213,72 @@ class _ConfirmacionCita extends State<ConfirmacionCita>
                           "Cita Presencial",
                           style: TextStyle(
                               // backgroundColor: Colors.white,
-                              fontWeight: FontWeight.normal,
+                              fontWeight: FontWeight.w400,
                               color: Colors.black),
                         ),
                         onChanged: (val) {
                           setSelectedRadioTile(val);
                         },
-                        activeColor: Colors.red,
+                        activeColor: Color(0xff5DB2E8),
+
                         // selected: false,
                       ),
                       Container(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            Container(
-                              width: 150,
-                              padding: EdgeInsets.only(top: 15, bottom: 15),
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: Color(0xffffffff),
+                            InkWell(
+                                child: Container(
+                                  width: 150,
+                                  padding: EdgeInsets.only(top: 15, bottom: 15),
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: Color(0xff5DB2E8),
+                                      ),
+                                      color: Color(0xffffffff),
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(15)),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.black.withOpacity(0.25),
+                                          spreadRadius: 0,
+                                          blurRadius: 4,
+                                          offset: Offset(0,
+                                              4), // changes position of shadow
+                                        ),
+                                      ]),
+                                  child: Center(
+                                    child: Text("Cancelar",
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold,
+                                            color: Color(0xff000000))),
                                   ),
-                                  color: Color(0xffffffff),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(5))),
-                              child: Center(
-                                child: Text("Cancelar",
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold,
-                                        color: Color(0xff000000))),
-                              ),
-                            ),
+                                ),
+                                onTap: () {
+                                  Navigator.of(context).pushNamedAndRemoveUntil(
+                                      '/home', (Route<dynamic> route) => false);
+                                }),
                             InkWell(
                               child: Container(
                                 width: 150,
                                 padding: EdgeInsets.only(top: 15, bottom: 15),
                                 decoration: BoxDecoration(
                                     border: Border.all(
-                                      color: Color(0xffffffff),
+                                      color: Color(0xffC5EDFC),
                                     ),
-                                    color: Color(0xffffffff),
+                                    color: Color(0xffC5EDFC),
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(5))),
+                                        BorderRadius.all(Radius.circular(15)),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withOpacity(0.25),
+                                        spreadRadius: 0,
+                                        blurRadius: 4,
+                                        offset: Offset(
+                                            0, 4), // changes position of shadow
+                                      ),
+                                    ]),
                                 child: Center(
                                   child: Text("Confirmar",
                                       style: TextStyle(

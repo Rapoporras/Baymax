@@ -1,4 +1,4 @@
-package com.rapoporras.baymax
+package com.rapoporras.care4u
 
 import io.flutter.embedding.android.FlutterActivity
 
