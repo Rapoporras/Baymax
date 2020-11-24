@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:baymax/Pages/Main_page.dart';
-import 'package:baymax/Pages/register_page.dart';
+import 'package:Care4U/Pages/Main_page.dart';
+import 'package:Care4U/Pages/register_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

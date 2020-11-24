@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:baymax/Pages/Help/ayuda.dart';
+import 'package:Care4U/Pages/Help/ayuda.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 
@@ -83,13 +83,17 @@ class _Home extends State<Home> with TickerProviderStateMixin {
           Container(
             width: 40,
             // color: Colors.green,
-            height: 40,
+            height: 50,
             // margin: EdgeInsets.only(bottom: 20),
-            child: FaIcon(
-              FontAwesomeIcons.userCircle,
-              color: Color(0xFF000000),
-              size: 40,
-            ),
+            child: Container(
+                width: 50,
+                height: 50,
+                decoration: new BoxDecoration(
+                    shape: BoxShape.circle,
+                    image: new DecorationImage(
+                        fit: BoxFit.fill,
+                        image: new NetworkImage(
+                            "https://firebasestorage.googleapis.com/v0/b/medicosregistrados.appspot.com/o/%20smXb5Y6pEHyqaKicXDXf%2Fperfil.png?alt=media&token=242330e0-a492-4a95-ae41-5caed64b48ba")))),
           ),
           Container(
             height: 50,
@@ -97,7 +101,7 @@ class _Home extends State<Home> with TickerProviderStateMixin {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Lucia Sanz",
+                  Text("José Santos López",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: 16,
@@ -114,8 +118,8 @@ class _Home extends State<Home> with TickerProviderStateMixin {
             ),
           ),
           Container(
-            height: 50,
-            child: Text("13/06/1987",
+            height: 60,
+            child: Text("13/06/1940",
                 textAlign: TextAlign.right,
                 style: TextStyle(
                     fontSize: 16,

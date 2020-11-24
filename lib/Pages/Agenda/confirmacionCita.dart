@@ -1,5 +1,5 @@
-import 'package:baymax/Pages/home.dart';
-import 'package:baymax/Pages/main_page.dart';
+import 'package:Care4U/Pages/home.dart';
+import 'package:Care4U/Pages/main_page.dart';
 import 'package:flutter/material.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:smart_select/smart_select.dart';
@@ -74,16 +74,19 @@ class _ConfirmacionCita extends State<ConfirmacionCita>
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                            width: 50,
-                            // color: Colors.green,
-                            height: 70,
-                            margin: EdgeInsets.only(top: 5, left: 15),
-                            child: FaIcon(
-                              FontAwesomeIcons.userCircle,
-                              color: Color(0xFF000000),
-                              size: 50,
-                            ),
-                          ),
+                              width: 50,
+                              // color: Colors.green,
+                              height: 70,
+                              margin: EdgeInsets.only(top: 5, left: 15),
+                              child: Container(
+                                  width: 50,
+                                  height: 50,
+                                  decoration: new BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      image: new DecorationImage(
+                                          fit: BoxFit.fill,
+                                          image: new NetworkImage(
+                                              "https://firebasestorage.googleapis.com/v0/b/medicosregistrados.appspot.com/o/doctor1.png?alt=media&token=c03ee1a1-427e-461f-858c-f7511169811a"))))),
                           Container(
                             height: 70,
                             margin: EdgeInsets.only(top: 10, left: 15),
@@ -91,7 +94,7 @@ class _ConfirmacionCita extends State<ConfirmacionCita>
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text("Dra. Méndez - Nutricionista",
+                                  Text("Dr. José Luis López  - Alergólogo",
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize: 16,

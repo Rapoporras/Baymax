@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:baymax/Pages/Doctor/facts_message.dart';
+import 'package:Care4U/Pages/Doctor/facts_message.dart';
 import 'package:flutter_dialogflow/dialogflow_v2.dart';
 
 class FlutterFactsChatBot extends StatefulWidget {

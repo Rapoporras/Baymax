@@ -1,4 +1,4 @@
-import 'package:baymax/Pages/Agenda/confirmacionCita.dart';
+import 'package:Care4U/Pages/Agenda/confirmacionCita.dart';
 import 'package:flutter/material.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:smart_select/smart_select.dart';
@@ -139,7 +139,13 @@ class _Especialista extends State<Especialista> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Nueva cita"),
+          title: Text(
+            "Nueva cita",
+            style: TextStyle(
+                color: Color(0xff0c2231),
+                fontSize: 22,
+                fontWeight: FontWeight.w700),
+          ),
         ),
         body: ListView(
           children: [

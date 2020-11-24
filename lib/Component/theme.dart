@@ -1,4 +1,4 @@
-import 'package:baymax/Component/config.dart';
+import 'package:Care4U/Component/config.dart';
 import 'package:flutter/material.dart';
 
 class MyTheme with ChangeNotifier {

@@ -1,5 +1,5 @@
-name: baymax
-description: A new Flutter project.
+name: Care4U
+description: Nuestro objetivo es desarrollar un sistema en el que facilite al paciente la telemedicina. Sin eliminar, las comodidades de los sanitarios y que puedan tener todo a su disposición.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -63,8 +63,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-    # - assets/baymax-a4aef-5c4e596516a1.json
+  assets:
+    - assets/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -81,11 +81,11 @@ flutter:
   fonts:
     - family: Roboto
       fonts:
-        - asset: assets/fonts/Roboto-Bold.ttf
+        - asset: fonts/Roboto-Bold.ttf
           weight: 700
-        - asset: assets/fonts/Roboto-Light.ttf
-        - asset: assets/fonts/Roboto-Regular.ttf
-        - asset: assets/fonts/Roboto-Medium.ttf
+        - asset: fonts/Roboto-Light.ttf
+        - asset: fonts/Roboto-Regular.ttf
+        - asset: fonts/Roboto-Medium.ttf
        
   
   # For details regarding fonts from package dependencies,

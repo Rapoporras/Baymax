@@ -1,5 +1,5 @@
-import 'package:baymax/Component/config.dart';
-import 'package:baymax/Pages/main_page.dart';
+import 'package:Care4U/Component/config.dart';
+import 'package:Care4U/Pages/main_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';

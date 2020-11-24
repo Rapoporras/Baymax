@@ -1,9 +1,10 @@
-import 'package:baymax/Component/config.dart';
-import 'package:baymax/Component/fab_bottom_app_bar.dart';
-import 'package:baymax/Pages/Agenda/agenda.dart';
-import 'package:baymax/Pages/Doctor/doctor.dart';
-import 'package:baymax/Pages/home.dart';
-import 'package:baymax/Pages/page4.dart';
+import 'package:Care4U/Component/config.dart';
+import 'package:Care4U/Component/fab_bottom_app_bar.dart';
+import 'package:Care4U/Pages/Agenda/agenda.dart';
+import 'package:Care4U/Pages/Doctor/doctor.dart';
+import 'package:Care4U/Pages/QrCode.dart';
+import 'package:Care4U/Pages/home.dart';
+import 'package:Care4U/Pages/page4.dart';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -61,14 +62,14 @@ class _MainPage extends State<MainPage> with TickerProviderStateMixin {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Navigator.of(context).push(
-          //   MaterialPageRoute(
-          //     builder: (context) {
-          //       return Page5();
-          //     },
-          //   ),
-          // );
-          currentTheme.switchTheme();
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) {
+                return QrCode();
+              },
+            ),
+          );
+          // currentTheme.switchTheme();
         },
         tooltip: 'Tarjeta',
         backgroundColor: Color(0xff5DB2E8),

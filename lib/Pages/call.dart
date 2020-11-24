@@ -5,7 +5,7 @@ import 'package:agora_rtc_engine/rtc_local_view.dart' as RtcLocalView;
 import 'package:agora_rtc_engine/rtc_remote_view.dart' as RtcRemoteView;
 import 'package:flutter/material.dart';
 
-import 'package:baymax/Component/config.dart';
+import 'package:Care4U/Component/config.dart';
 
 class CallPage extends StatefulWidget {
   /// non-modifiable channel name of the page

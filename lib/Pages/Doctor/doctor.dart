@@ -1,6 +1,6 @@
-import 'package:baymax/Pages/Doctor/dialog_flow.dart';
-import 'package:baymax/Pages/home.dart';
-import 'package:baymax/Pages/main_page.dart';
+import 'package:Care4U/Pages/Doctor/dialog_flow.dart';
+import 'package:Care4U/Pages/home.dart';
+import 'package:Care4U/Pages/main_page.dart';
 import 'package:flutter/material.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:smart_select/smart_select.dart';
@@ -82,11 +82,15 @@ class _Doctor extends State<Doctor> with TickerProviderStateMixin {
                             // color: Colors.green,
                             height: 60,
                             margin: EdgeInsets.only(top: 5, left: 15),
-                            child: FaIcon(
-                              FontAwesomeIcons.userCircle,
-                              color: Color(0xFF000000),
-                              size: 50,
-                            ),
+                            child: Container(
+                                width: 50,
+                                height: 50,
+                                decoration: new BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    image: new DecorationImage(
+                                        fit: BoxFit.fill,
+                                        image: new NetworkImage(
+                                            "https://firebasestorage.googleapis.com/v0/b/medicosregistrados.appspot.com/o/doctor2.png?alt=media&token=8602dae3-9d03-4cee-91e9-2fe08e974643")))),
                           ),
                           Container(
                             height: 60,

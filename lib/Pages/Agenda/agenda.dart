@@ -1,4 +1,4 @@
-import 'package:baymax/Pages/Agenda/especialista.dart';
+import 'package:Care4U/Pages/Agenda/especialista.dart';
 import 'package:flutter/material.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart'
@@ -207,7 +207,13 @@ class _Agenda extends State<Agenda> with TickerProviderStateMixin {
 
     return new Scaffold(
         appBar: new AppBar(
-          title: new Text("Agenda"),
+          title: new Text(
+            "Agenda",
+            style: TextStyle(
+                color: Color(0xff0c2231),
+                fontSize: 22,
+                fontWeight: FontWeight.w700),
+          ),
         ),
         body: SingleChildScrollView(
           child: mainAgenda(),
@@ -328,11 +334,15 @@ class _Agenda extends State<Agenda> with TickerProviderStateMixin {
                         // color: Colors.green,
                         height: 70,
                         margin: EdgeInsets.only(top: 5, left: 15),
-                        child: FaIcon(
-                          FontAwesomeIcons.userCircle,
-                          color: Color(0xFF000000),
-                          size: 50,
-                        ),
+                        child: Container(
+                            width: 50,
+                            height: 50,
+                            decoration: new BoxDecoration(
+                                shape: BoxShape.circle,
+                                image: new DecorationImage(
+                                    fit: BoxFit.fill,
+                                    image: new NetworkImage(
+                                        "https://firebasestorage.googleapis.com/v0/b/medicosregistrados.appspot.com/o/doctor1.png?alt=media&token=c03ee1a1-427e-461f-858c-f7511169811a")))),
                       ),
                       Container(
                         height: 70,
