@@ -71,8 +71,9 @@ class _Info extends State<Info> with TickerProviderStateMixin {
                                     color: Color(0xff5DB2E8),
                                   ),
                                   color: Color(0xff5DB2E8),
-                                  // borderRadius:
-                                  //     BorderRadius.all(Radius.circular(15)),
+                                  borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(15),
+                                      bottomLeft: Radius.circular(15)),
                                 ),
                                 child: Center(
                                   child: Container(
@@ -162,8 +163,9 @@ class _Info extends State<Info> with TickerProviderStateMixin {
                                     color: Color(0xff5DB2E8),
                                   ),
                                   color: Color(0xff5DB2E8),
-                                  // borderRadius:
-                                  //     BorderRadius.all(Radius.circular(15)),
+                                  borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(15),
+                                      bottomLeft: Radius.circular(15)),
                                 ),
                                 child: Center(
                                   child: Container(
@@ -253,8 +255,9 @@ class _Info extends State<Info> with TickerProviderStateMixin {
                                     color: Color(0xff5DB2E8),
                                   ),
                                   color: Color(0xff5DB2E8),
-                                  // borderRadius:
-                                  //     BorderRadius.all(Radius.circular(15)),
+                                  borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(15),
+                                      bottomLeft: Radius.circular(15)),
                                 ),
                                 child: Center(
                                   child: Container(
@@ -344,8 +347,9 @@ class _Info extends State<Info> with TickerProviderStateMixin {
                                     color: Color(0xff5DB2E8),
                                   ),
                                   color: Color(0xff5DB2E8),
-                                  // borderRadius:
-                                  //     BorderRadius.all(Radius.circular(15)),
+                                  borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(15),
+                                      bottomLeft: Radius.circular(15)),
                                 ),
                                 child: Center(
                                   child: Container(

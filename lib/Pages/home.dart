@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:Care4U/Pages/Help/ayuda.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../Models/paciente.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 
 class Home extends StatefulWidget {
@@ -16,6 +18,12 @@ class Home extends StatefulWidget {
 class _Home extends State<Home> with TickerProviderStateMixin {
   // String _phoneNumber;
   String provincia = "Andalucia";
+  Paciente paciente = new Paciente("smXb5Y6pEHyqaKicXDXf");
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,6 +65,7 @@ class _Home extends State<Home> with TickerProviderStateMixin {
   }
 
   Widget barraInfo() {
+    // print("hola" + paciente.imagen);
     return Container(
       height: 60,
       decoration: BoxDecoration(
@@ -78,14 +87,14 @@ class _Home extends State<Home> with TickerProviderStateMixin {
       padding: EdgeInsets.only(top: 5, bottom: 5),
       width: MediaQuery.of(context).size.width,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        // mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             width: 40,
             // color: Colors.green,
             height: 50,
-            // margin: EdgeInsets.only(bottom: 20),
+            margin: EdgeInsets.only(left: 20, right: 20),
             child: Container(
                 width: 50,
                 height: 50,
@@ -93,39 +102,38 @@ class _Home extends State<Home> with TickerProviderStateMixin {
                     shape: BoxShape.circle,
                     image: new DecorationImage(
                         fit: BoxFit.fill,
-                        image: new NetworkImage(paciente.imagen)))),
+                        image: new NetworkImage(
+                            "https://firebasestorage.googleapis.com/v0/b/medicosregistrados.appspot.com/o/%20smXb5Y6pEHyqaKicXDXf%2Fperfil.png?alt=media&token=242330e0-a492-4a95-ae41-5caed64b48ba")))),
           ),
           Container(
             height: 50,
-            child: Center(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(paciente.nombre,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
-                          color: Color(0xff000000))),
-                  Text(paciente.resumen,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
-                          color: Color(0xff000000)))
-                ],
-              ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(paciente.nombre,
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xff000000))),
+                Text(paciente.nacimiento,
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xff000000)))
+              ],
             ),
           ),
-          Container(
-            height: 60,
-            child: Text(paciente.nacimiento,
-                textAlign: TextAlign.right,
-                style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400,
-                    color: Color(0xff000000))),
-          )
+          // Container(
+          //   height: 60,
+          //   child: Text(paciente.nacimiento,
+          //       textAlign: TextAlign.right,
+          //       style: TextStyle(
+          //           fontSize: 16,
+          //           fontWeight: FontWeight.w400,
+          //           color: Color(0xff000000))),
+          // )
         ],
       ),
     );
@@ -386,7 +394,7 @@ class _Home extends State<Home> with TickerProviderStateMixin {
               children: [
                 Container(
                   height: 55,
-                  width: 80,
+                  width: 75,
                   margin: EdgeInsets.only(left: 5, right: 5),
                   padding:
                       EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 5),
@@ -430,7 +438,7 @@ class _Home extends State<Home> with TickerProviderStateMixin {
                 ),
                 Container(
                   height: 55,
-                  width: 80,
+                  width: 75,
                   margin: EdgeInsets.only(left: 5, right: 5),
                   padding:
                       EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 5),
@@ -474,7 +482,7 @@ class _Home extends State<Home> with TickerProviderStateMixin {
                 ),
                 Container(
                   height: 55,
-                  width: 80,
+                  width: 75,
                   margin: EdgeInsets.only(left: 5, right: 5),
                   padding:
                       EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 5),
@@ -518,7 +526,7 @@ class _Home extends State<Home> with TickerProviderStateMixin {
                 ),
                 Container(
                   height: 55,
-                  width: 80,
+                  width: 75,
                   margin: EdgeInsets.only(left: 5, right: 5),
                   padding:
                       EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 5),

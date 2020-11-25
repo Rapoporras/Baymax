@@ -210,7 +210,7 @@ class _Doctor extends State<Doctor> with TickerProviderStateMixin {
                               ),
                               Row(
                                 mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceAround,
                                 children: [
                                   Container(
                                     width: 150,

@@ -1,6 +1,5 @@
 import 'package:Care4U/Pages/Agenda/confirmacionCita.dart';
 import 'package:flutter/material.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:smart_select/smart_select.dart';
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -17,6 +16,12 @@ class _Especialista extends State<Especialista> with TickerProviderStateMixin {
   List<S2Choice<String>> especialidades = [];
 
   List<Map<String, dynamic>> medicos = [];
+  @override
+  void initState() {
+    super.initState();
+    obtenerMedicos();
+    obtenerEspecialidades();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -108,7 +113,6 @@ class _Especialista extends State<Especialista> with TickerProviderStateMixin {
 
   Widget tipoCita() {
     String especialidad = "";
-    obtenerEspecialidades();
 
     return Container(
       padding: EdgeInsets.only(left: 20, right: 20),
@@ -168,7 +172,6 @@ class _Especialista extends State<Especialista> with TickerProviderStateMixin {
 
   Widget doctor() {
     List<String> medico = [];
-    obtenerMedicos();
 
     print(medicos);
     return Container(

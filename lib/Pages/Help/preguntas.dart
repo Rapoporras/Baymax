@@ -1,11 +1,5 @@
-import 'package:Care4U/Pages/Agenda/confirmacionCita.dart';
 import 'package:Care4U/Pages/Help/otraspreguntas.dart';
 import 'package:flutter/material.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
-import 'package:smart_select/smart_select.dart';
-import 'package:date_time_picker/date_time_picker.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Preguntas extends StatefulWidget {
   Preguntas({Key key}) : super(key: key);
@@ -15,10 +9,6 @@ class Preguntas extends StatefulWidget {
 }
 
 class _Preguntas extends State<Preguntas> with TickerProviderStateMixin {
-  List<S2Choice<String>> especialidades = [];
-
-  List<Map<String, dynamic>> medicos = [];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,8 +54,9 @@ class _Preguntas extends State<Preguntas> with TickerProviderStateMixin {
                                 color: Color(0xffC5EDFC),
                               ),
                               color: Color(0xffC5EDFC),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(15)),
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(15),
+                                  topRight: Radius.circular(15)),
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.25),

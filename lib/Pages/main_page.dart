@@ -4,7 +4,7 @@ import 'package:Care4U/Pages/Agenda/agenda.dart';
 import 'package:Care4U/Pages/Doctor/doctor.dart';
 import 'package:Care4U/Pages/qrCode.dart';
 import 'package:Care4U/Pages/home.dart';
-import 'package:Care4U/Pages/page4.dart';
+import 'package:Care4U/Pages/Setting/setting.dart';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -27,7 +27,7 @@ class _MainPage extends State<MainPage> with TickerProviderStateMixin {
     Home(),
     Doctor(),
     Agenda(),
-    Page4(),
+    Setting(),
   ];
 
   void _selectedTab(int index) {

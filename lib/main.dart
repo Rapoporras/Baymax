@@ -11,6 +11,7 @@ Future<void> main() async {
   await Firebase.initializeApp();
   await Hive.initFlutter();
   box = await Hive.openBox('easyTheme');
+  box = await Hive.openBox('movilidadreducida');
   runApp(Care4UApp());
 }
 
