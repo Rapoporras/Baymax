@@ -1,10 +1,4 @@
-import 'package:Care4U/Pages/Agenda/confirmacionCita.dart';
 import 'package:flutter/material.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
-import 'package:smart_select/smart_select.dart';
-import 'package:date_time_picker/date_time_picker.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:video_player/video_player.dart';
 import 'dart:async';
 

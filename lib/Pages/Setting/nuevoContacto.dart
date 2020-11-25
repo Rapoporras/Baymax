@@ -1,17 +1,17 @@
-// import 'package:Care4U/Pages/Help/otrasContacto.dart';
-import 'package:Care4U/Pages/Setting/nuevoContacto.dart';
+// import 'package:Care4U/Pages/Help/otrasNuevoContacto.dart';
 import 'package:flutter/material.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class Contacto extends StatefulWidget {
-  Contacto({Key key}) : super(key: key);
+class NuevoContacto extends StatefulWidget {
+  NuevoContacto({Key key}) : super(key: key);
 
   @override
-  _Contacto createState() => new _Contacto();
+  _NuevoContacto createState() => new _NuevoContacto();
 }
 
-class _Contacto extends State<Contacto> with TickerProviderStateMixin {
+class _NuevoContacto extends State<NuevoContacto>
+    with TickerProviderStateMixin {
   bool isSwitched = true;
 
   @override
@@ -19,7 +19,7 @@ class _Contacto extends State<Contacto> with TickerProviderStateMixin {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-            "Contacto Frecuentes",
+            "Nuevo Contacto",
             style: TextStyle(
                 color: Color(0xff0c2231),
                 fontSize: 22,
@@ -69,7 +69,7 @@ class _Contacto extends State<Contacto> with TickerProviderStateMixin {
                                       MainAxisAlignment.spaceAround,
                                   children: [
                                     Center(
-                                      child: Text("Irene Santos Martínez",
+                                      child: Text("Nuevo contacto",
                                           style: TextStyle(
                                               fontSize: 20,
                                               fontWeight: FontWeight.w400,
@@ -77,48 +77,6 @@ class _Contacto extends State<Contacto> with TickerProviderStateMixin {
                                     ),
                                   ],
                                 ))),
-                        Container(
-                            width: 40,
-                            height: 40,
-                            margin: EdgeInsets.only(left: 2, right: 2),
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Color(0xff5DB2E8),
-                              ),
-                              color: Color(0xff5DB2E8),
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                Center(
-                                    child: FaIcon(
-                                  FontAwesomeIcons.pen,
-                                  color: Color(0xFF0C2231),
-                                )),
-                              ],
-                            )),
-                        Container(
-                            height: 40,
-                            width: 40,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Color(0xff5DB2E8),
-                              ),
-                              color: Color(0xff5DB2E8),
-                              borderRadius: BorderRadius.only(
-                                  topRight: Radius.circular(15),
-                                  bottomRight: Radius.circular(15)),
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                Center(
-                                    child: FaIcon(
-                                  FontAwesomeIcons.userMinus,
-                                  color: Color(0xFF0C2231),
-                                )),
-                              ],
-                            )),
                       ],
                     )),
                     Container(
@@ -131,7 +89,7 @@ class _Contacto extends State<Contacto> with TickerProviderStateMixin {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
-                                height: 40,
+                                // height: 80,
                                 width: MediaQuery.of(context).size.width,
                                 padding: EdgeInsets.all(10),
                                 decoration: BoxDecoration(
@@ -143,14 +101,45 @@ class _Contacto extends State<Contacto> with TickerProviderStateMixin {
                                       topRight: Radius.circular(15),
                                       topLeft: Radius.circular(15)),
                                 ),
-                                child: Text("Teléfono: 666 666 666",
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w300,
-                                        color: Color(0xff000000))),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text("Nombre:",
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w300,
+                                            color: Color(0xff000000))),
+                                    TextField()
+                                  ],
+                                ),
                               ),
                               Container(
-                                height: 40,
+                                // height: 80,
+                                width: MediaQuery.of(context).size.width,
+                                padding: EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: Color(0xffF6F6F6),
+                                  ),
+                                  color: Color(0xffF6F6F6),
+                                  borderRadius: BorderRadius.only(
+                                      topRight: Radius.circular(15),
+                                      topLeft: Radius.circular(15)),
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text("Relación:",
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w300,
+                                            color: Color(0xff000000))),
+                                    TextField()
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                // height: º0,
                                 width: MediaQuery.of(context).size.width,
                                 padding: EdgeInsets.all(10),
                                 decoration: BoxDecoration(
@@ -162,11 +151,17 @@ class _Contacto extends State<Contacto> with TickerProviderStateMixin {
                                   //     topRight: Radius.circular(15),
                                   //     bottomRight: Radius.circular(15)),
                                 ),
-                                child: Text("Relación: Hija",
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w300,
-                                        color: Color(0xff000000))),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text("Teléfono:",
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w300,
+                                            color: Color(0xff000000))),
+                                    TextField()
+                                  ],
+                                ),
                               ),
                               Container(
                                 height: 40,
@@ -244,7 +239,7 @@ class _Contacto extends State<Contacto> with TickerProviderStateMixin {
                         ),
                         Container(
                           margin: EdgeInsets.only(left: 15),
-                          child: Text("Añadir Contacto",
+                          child: Text("Añadir Nuevo Contacto",
                               style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.w500,
@@ -263,7 +258,7 @@ class _Contacto extends State<Contacto> with TickerProviderStateMixin {
                       ),
                     );
                   },
-                ))
+                )),
           ],
         ));
   }

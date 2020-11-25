@@ -1,7 +1,5 @@
-import 'package:Care4U/Pages/main_page.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
-import 'package:Care4U/Component/config.dart';
 
 // import 'package:firebase_auth/firebase_auth.dart';
 
@@ -34,7 +32,7 @@ class _QrCode extends State<QrCode> with TickerProviderStateMixin {
                         gapless: false,
                         foregroundColor: Color(0xff0C2231),
                         embeddedImage: NetworkImage(
-                            'https://img2.wikia.nocookie.net/__cb20140719160257/disney/images/0/05/Care4U_Render.png'),
+                            'https://firebasestorage.googleapis.com/v0/b/medicosregistrados.appspot.com/o/cede2ae5-3d63-4fd6-9d08-bf43f9b5a6d3.jpg?alt=media&token=ebf13089-3464-4601-b59a-06e4aec16350'),
                         embeddedImageStyle: QrEmbeddedImageStyle(
                           size: Size(80, 80),
                         ),

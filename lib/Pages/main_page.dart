@@ -1,4 +1,3 @@
-import 'package:Care4U/Component/config.dart';
 import 'package:Care4U/Component/fab_bottom_app_bar.dart';
 import 'package:Care4U/Pages/Agenda/agenda.dart';
 import 'package:Care4U/Pages/Doctor/doctor.dart';

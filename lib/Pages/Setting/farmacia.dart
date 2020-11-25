@@ -1,9 +1,5 @@
-import 'dart:async';
-import 'dart:collection';
-
 import 'package:Care4U/Pages/Setting/maps.dart';
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class Farmacia extends StatefulWidget {
   Farmacia({Key key}) : super(key: key);

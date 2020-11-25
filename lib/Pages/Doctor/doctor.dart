@@ -1,11 +1,6 @@
 import 'package:Care4U/Pages/Doctor/dialog_flow.dart';
-import 'package:Care4U/Pages/home.dart';
-import 'package:Care4U/Pages/main_page.dart';
+
 import 'package:flutter/material.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
-import 'package:smart_select/smart_select.dart';
-import 'package:date_time_picker/date_time_picker.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Doctor extends StatefulWidget {
   Doctor({Key key}) : super(key: key);

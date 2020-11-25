@@ -1,9 +1,14 @@
-import 'package:Care4U/Component/config.dart';
+import 'dart:async';
+// import 'package:agora_rtc_engine/rtc_engine.dart';
+// import 'package:agora_rtc_engine/rtc_engine.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:Care4U/Pages/Help/ayuda.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:permission_handler/permission_handler.dart';
+
+import 'package:Care4U/Pages/call.dart';
 
 import '../Models/paciente.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
@@ -18,10 +23,10 @@ class Home extends StatefulWidget {
 class _Home extends State<Home> with TickerProviderStateMixin {
   // String _phoneNumber;
   String provincia = "Andalucia";
-  Paciente paciente = new Paciente("smXb5Y6pEHyqaKicXDXf");
-
+  Paciente paciente;
   @override
   void initState() {
+    paciente = new Paciente("smXb5Y6pEHyqaKicXDXf");
     super.initState();
   }
 
@@ -603,7 +608,7 @@ class _Home extends State<Home> with TickerProviderStateMixin {
   Widget proximaCita() {
     Widget cita;
     bool _haycita = true;
-    String _tipoCita = "presencial";
+    String _tipoCita = "online";
     if (_haycita == false) {
       cita = Container(
         height: 120,
@@ -745,26 +750,31 @@ class _Home extends State<Home> with TickerProviderStateMixin {
                         ),
                       ),
                     ),
-                    Container(
-                      // margin: EdgeInsets.only(left: ),
-                      width: 120,
-                      height: 70,
-                      decoration: BoxDecoration(
-                        border: Border.all(
+                    InkWell(
+                      child: Container(
+                        // margin: EdgeInsets.only(left: ),
+                        width: 120,
+                        height: 70,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Color(0xFF5DB2E8),
+                          ),
                           color: Color(0xFF5DB2E8),
+                          borderRadius: BorderRadius.all(Radius.circular(5)),
                         ),
-                        color: Color(0xFF5DB2E8),
-                        borderRadius: BorderRadius.all(Radius.circular(5)),
-                      ),
 
-                      child: Center(
-                        child: FaIcon(
-                          FontAwesomeIcons.video,
-                          color: Color(0xFF0C2231),
-                          size: 30,
+                        child: Center(
+                          child: FaIcon(
+                            FontAwesomeIcons.video,
+                            color: Color(0xFF0C2231),
+                            size: 30,
+                          ),
                         ),
                       ),
-                    ),
+                      onTap: () {
+                        onJoin();
+                      },
+                    )
                   ],
                 ),
               )
@@ -1013,6 +1023,26 @@ class _Home extends State<Home> with TickerProviderStateMixin {
           )
         ],
       ),
+    );
+  }
+
+  Future<void> onJoin() async {
+    await _handleCameraAndMic();
+    // push video page with given channel name
+    await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => CallPage(
+            // channelName: "prueba",
+            // role: ClientRole.Broadcaster,
+            ),
+      ),
+    );
+  }
+
+  Future<void> _handleCameraAndMic() async {
+    await PermissionHandler().requestPermissions(
+      [PermissionGroup.camera, PermissionGroup.microphone],
     );
   }
 }

@@ -61,7 +61,7 @@ class _CallPageState extends State<CallPage> {
     VideoEncoderConfiguration configuration = VideoEncoderConfiguration();
     configuration.dimensions = VideoDimensions(1920, 1080);
     await _engine.setVideoEncoderConfiguration(configuration);
-    await _engine.joinChannel(Token, widget.channelName, null, 0);
+    await _engine.joinChannel(Token, "prueba", null, 0);
   }
 
   /// Create agora sdk instance and initialize
@@ -69,7 +69,7 @@ class _CallPageState extends State<CallPage> {
     _engine = await RtcEngine.create(APP_ID);
     await _engine.enableVideo();
     await _engine.setChannelProfile(ChannelProfile.LiveBroadcasting);
-    await _engine.setClientRole(widget.role);
+    await _engine.setClientRole(ClientRole.Broadcaster);
   }
 
   /// Add agora event handlers

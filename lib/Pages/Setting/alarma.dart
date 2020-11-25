@@ -12,6 +12,7 @@ class Alarma extends StatefulWidget {
 
 class _Alarma extends State<Alarma> with TickerProviderStateMixin {
   bool isSwitched = false;
+  bool isSwitched2 = false;
   String dropdownValue = 'One';
   String dropdownValue2 = 'Selecciona medicamento';
 
@@ -113,10 +114,10 @@ class _Alarma extends State<Alarma> with TickerProviderStateMixin {
                                             fontWeight: FontWeight.w300,
                                             color: Color(0xff000000))),
                                     Switch(
-                                      value: isSwitched,
+                                      value: isSwitched2,
                                       onChanged: (value) {
                                         setState(() {
-                                          isSwitched = value;
+                                          isSwitched2 = value;
                                           // box.put(
                                           //     'movilidadreducida', isSwitched);
                                         });

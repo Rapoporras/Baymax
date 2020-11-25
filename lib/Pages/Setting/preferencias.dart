@@ -1,4 +1,3 @@
-import 'package:Care4U/Pages/Help/otraspreguntas.dart';
 import 'package:flutter/material.dart';
 
 class Preferencias extends StatefulWidget {
