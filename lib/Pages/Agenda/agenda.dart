@@ -117,7 +117,7 @@ class _Agenda extends State<Agenda> with TickerProviderStateMixin {
       headerText: 'Custom Header',
       weekFormat: true,
       markedDatesMap: _markedDateMap,
-      height: 200.0,
+      // height: 200.0,
       selectedDateTime: _currentDate2,
 
       showIconBehindDayText: true,
@@ -303,7 +303,7 @@ class _Agenda extends State<Agenda> with TickerProviderStateMixin {
           ),
         ),
         Container(
-          height: 140,
+          // height: 140,
           padding: EdgeInsets.only(left: 20, right: 20),
           margin: EdgeInsets.only(bottom: 20),
           width: MediaQuery.of(context).size.width,
@@ -344,61 +344,66 @@ class _Agenda extends State<Agenda> with TickerProviderStateMixin {
                                     image: new NetworkImage(
                                         "https://firebasestorage.googleapis.com/v0/b/medicosregistrados.appspot.com/o/doctor1.png?alt=media&token=c03ee1a1-427e-461f-858c-f7511169811a")))),
                       ),
-                      Container(
-                        height: 70,
-                        margin: EdgeInsets.only(top: 10, left: 15),
-                        child: Center(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text("Dr. José Luis López  - Alergólogo",
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w400,
-                                      color: Color(0xff000000))),
-                              Container(
-                                width: 280,
-                                margin: EdgeInsets.only(top: 10),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text("11/11/2020",
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w400,
-                                            color: Color(0xff000000))),
-                                    Text("09:30",
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w400,
-                                            color: Color(0xff000000))),
-                                    Text("Sala 318",
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w400,
-                                            color: Color(0xff000000)))
-                                  ],
+                      Expanded(
+                        child: Container(
+                          height: 70,
+                          margin: EdgeInsets.only(top: 10, left: 15),
+                          child: Center(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text("Dr. José Luis López  - Alergólogo",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w400,
+                                        color: Color(0xff000000))),
+                                Container(
+                                  // width: 280,
+                                  margin: EdgeInsets.only(top: 10),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text("11/11/2020",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w400,
+                                              color: Color(0xff000000))),
+                                      Text("09:30",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w400,
+                                              color: Color(0xff000000))),
+                                      Text("Sala 318",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w400,
+                                              color: Color(0xff000000)))
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       )
                     ],
                   ),
                   Container(
+                    margin: EdgeInsets.only(bottom: 15),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Container(
-                          width: 150,
-                          padding: EdgeInsets.only(top: 15, bottom: 15),
+                          // width: 150,
+                          padding: EdgeInsets.only(
+                              top: 15, bottom: 15, left: 25, right: 25),
                           decoration: BoxDecoration(
                               border: Border.all(
                                 color: Color(0xff5DB2E8),
@@ -424,8 +429,9 @@ class _Agenda extends State<Agenda> with TickerProviderStateMixin {
                           ),
                         ),
                         Container(
-                          width: 150,
-                          padding: EdgeInsets.only(top: 15, bottom: 15),
+                          // width: 150,
+                          padding: EdgeInsets.only(
+                              top: 15, bottom: 15, left: 25, right: 25),
                           decoration: BoxDecoration(
                               border: Border.all(
                                 color: Color(0xff5DB2E8),

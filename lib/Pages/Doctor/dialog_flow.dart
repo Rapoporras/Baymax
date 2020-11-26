@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:Care4U/Pages/Doctor/facts_message.dart';
 import 'package:flutter_dialogflow/dialogflow_v2.dart';
 
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 class FlutterFactsChatBot extends StatefulWidget {
-  FlutterFactsChatBot({Key key, this.title}) : super(key: key);
+  FlutterFactsChatBot(this.title, {Key key}) : super(key: key);
 
   final String title;
 
@@ -21,23 +23,40 @@ class _FlutterFactsChatBotState extends State<FlutterFactsChatBot> {
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(30))),
       child: Padding(
-        padding: const EdgeInsets.only(left: 8.0, right: 8),
+        padding: const EdgeInsets.only(left: 8.0),
         child: Row(
+          // mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
             Flexible(
               child: TextField(
                 controller: _textController,
                 onSubmitted: _submitQuery,
                 decoration:
-                    InputDecoration.collapsed(hintText: "Send a message"),
+                    InputDecoration.collapsed(hintText: "Escribe tu mensaje"),
               ),
             ),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 4.0),
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Color(0xffC5EDFC),
+                ),
+                color: Color(0xffC5EDFC),
+                borderRadius: BorderRadius.all(Radius.circular(50)),
+                // boxShadow: [
+                //   BoxShadow(
+                //     color: Colors.black.withOpacity(0.25),
+                //     spreadRadius: 0,
+                //     blurRadius: 4,
+                //     offset: Offset(0, 4), // changes position of shadow
+                //   ),
+                // ],
+              ),
+              // margin: EdgeInsets.symmetric(horizontal: 4.0),
               child: IconButton(
-                  icon: Icon(
-                    Icons.send,
-                    color: Colors.green[400],
+                  icon: FaIcon(
+                    FontAwesomeIcons.paperPlane,
+                    color: Color(0xFF0C2231),
+                    size: 25,
                   ),
                   onPressed: () => _submitQuery(_textController.text)),
             ),
@@ -85,11 +104,12 @@ class _FlutterFactsChatBotState extends State<FlutterFactsChatBot> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          "Flutter Facts",
-          style: TextStyle(color: Colors.green[400]),
+          widget.title,
+          style: TextStyle(
+              color: Color(0xff0c2231),
+              fontSize: 22,
+              fontWeight: FontWeight.w700),
         ),
-        backgroundColor: Colors.white,
-        elevation: 0,
       ),
       body: Column(children: <Widget>[
         Flexible(

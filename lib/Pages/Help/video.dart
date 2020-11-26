@@ -2,16 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 import 'dart:async';
 
-class VideoPlayerApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Video Player Demo',
-      home: VideoPlayerScreen(),
-    );
-  }
-}
-
 class VideoPlayerScreen extends StatefulWidget {
   VideoPlayerScreen({Key key}) : super(key: key);
 
@@ -53,11 +43,24 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Butterfly Video'),
+        // leading: IconButton(
+        //     icon: Icon(Icons.arrow_back, color: Color(0xff0c2231)),
+        //     onPressed: () => {
+        //           Navigator.of(context).pushNamedAndRemoveUntil(
+        //               '/home', (Route<dynamic> route) => false)
+        //         }),
+        title: Text(
+          "Video Proyecto",
+          style: TextStyle(
+              color: Color(0xff0c2231),
+              fontSize: 22,
+              fontWeight: FontWeight.w700),
+        ),
       ),
       // Usa un FutureBuilder para visualizar un spinner de carga mientras espera a que
       // la inicialización de VideoPlayerController finalice.
-      body: FutureBuilder(
+      body: Center(
+          child: FutureBuilder(
         future: _initializeVideoPlayerFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
@@ -74,7 +77,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
             return Center(child: CircularProgressIndicator());
           }
         },
-      ),
+      )),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // Envuelve la reproducción o pausa en una llamada a `setState`. Esto asegura

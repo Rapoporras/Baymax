@@ -10,9 +10,9 @@
             android:src="@mipmap/ic_launcher" />
     </item>-->
 
-   <item>
+   <!-- <item>
        <bitmap
            android:gravity="center"
            android:src="@drawable/I4H_Black" />
-   </item>
+   </item> -->
 </layer-list>

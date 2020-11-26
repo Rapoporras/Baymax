@@ -135,7 +135,7 @@ class _Ayuda extends State<Ayuda> with TickerProviderStateMixin {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) {
-                      return VideoPlayerApp();
+                      return VideoPlayerScreen();
                     },
                   ),
                 );

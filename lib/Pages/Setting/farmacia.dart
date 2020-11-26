@@ -15,20 +15,6 @@ class _Farmacia extends State<Farmacia> with TickerProviderStateMixin {
 
   String value = "";
   // Declare this variable
-  int selectedRadioTile;
-  int selectedRadio;
-  @override
-  void initState() {
-    super.initState();
-    selectedRadio = 0;
-    selectedRadioTile = 0;
-  }
-
-  setSelectedRadioTile(int val) {
-    setState(() {
-      selectedRadioTile = val;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {

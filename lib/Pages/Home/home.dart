@@ -1,6 +1,12 @@
 import 'dart:async';
-// import 'package:agora_rtc_engine/rtc_engine.dart';
-// import 'package:agora_rtc_engine/rtc_engine.dart';
+import 'package:Care4U/Pages/Agenda/especialista.dart';
+import 'package:Care4U/Pages/Doctor/dialog_flow.dart';
+import 'package:Care4U/Pages/Home/dietas.dart';
+import 'package:Care4U/Pages/Home/evolucion.dart';
+import 'package:Care4U/Pages/Home/pastillas.dart';
+import 'package:Care4U/Pages/Home/pruebas.dart';
+import 'package:Care4U/Pages/Home/recetas.dart';
+import 'package:Care4U/Pages/QrCode.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -8,10 +14,9 @@ import 'package:Care4U/Pages/Help/ayuda.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-import 'package:Care4U/Pages/call.dart';
+import 'package:Care4U/Pages/Home/call.dart';
 
-import '../Models/paciente.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
+import '../../Models/paciente.dart';
 
 class Home extends StatefulWidget {
   Home({Key key}) : super(key: key);
@@ -70,7 +75,6 @@ class _Home extends State<Home> with TickerProviderStateMixin {
   }
 
   Widget barraInfo() {
-    // print("hola" + paciente.imagen);
     return Container(
       height: 60,
       decoration: BoxDecoration(
@@ -92,7 +96,6 @@ class _Home extends State<Home> with TickerProviderStateMixin {
       padding: EdgeInsets.only(top: 5, bottom: 5),
       width: MediaQuery.of(context).size.width,
       child: Row(
-        // mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
@@ -118,53 +121,42 @@ class _Home extends State<Home> with TickerProviderStateMixin {
                 Text(paciente.nombre,
                     textAlign: TextAlign.left,
                     style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
                         color: Color(0xff000000))),
-                Text(paciente.nacimiento,
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                        color: Color(0xff000000)))
+                Row(
+                  children: [
+                    FaIcon(
+                      FontAwesomeIcons.birthdayCake,
+                      color: Color(0xff0c2231),
+                      size: 18,
+                    ),
+                    Container(
+                        margin: EdgeInsets.only(left: 5),
+                        child: Text(paciente.nacimiento,
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xff000000)))),
+                  ],
+                )
               ],
             ),
           ),
-          // Container(
-          //   height: 60,
-          //   child: Text(paciente.nacimiento,
-          //       textAlign: TextAlign.right,
-          //       style: TextStyle(
-          //           fontSize: 16,
-          //           fontWeight: FontWeight.w400,
-          //           color: Color(0xff000000))),
-          // )
         ],
       ),
     );
   }
 
   void numeroCovid(provincia) {
-    // FirebaseFirestore.instance
-    //     .collection('numero_covid')
-    //     .doc("3AG6qws1OEJbM8wCAloR")
-    //     .get()
-    //     .then((DocumentSnapshot documentSnapshot) {
-    //   // print(documentSnapshot.data()["Madrid"]);
-    //   String phone = documentSnapshot.data()[provincia];
-    //   // print(phone);
-    //   // print(provincia);
-    //   launch('tel://$phone');
-    // });
     FirebaseFirestore.instance
         .collection('numero_covid')
         .doc("3AG6qws1OEJbM8wCAloR")
         .get()
         .then((DocumentSnapshot documentSnapshot) {
-      // print(documentSnapshot.data()["Madrid"]);
       String phone = documentSnapshot.data()[provincia];
-      // print(phone);
-      // print(provincia);
+
       launch('tel://$phone');
     });
   }
@@ -209,146 +201,206 @@ class _Home extends State<Home> with TickerProviderStateMixin {
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: [
-                Container(
-                    height: 55,
-                    width: 80,
-                    margin: EdgeInsets.only(left: 5, right: 5),
-                    padding:
-                        EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 5),
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Color(0xff5DB2E8),
-                        ),
-                        color: Color(0xffffffff),
-                        borderRadius: BorderRadius.all(Radius.circular(5)),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.25),
-                            spreadRadius: 0,
-                            blurRadius: 4,
-                            offset: Offset(0, 4), // changes position of shadow
+                InkWell(
+                  child: Container(
+                      height: 55,
+                      width: 80,
+                      margin: EdgeInsets.only(left: 5, right: 5),
+                      padding:
+                          EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 5),
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Color(0xff5DB2E8),
                           ),
-                        ]),
-                    child: Center(
-                      child: Text("Mis pastillas",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w300,
-                              color: Color(0xff000000))),
-                    )),
-                Container(
-                    height: 55,
-                    width: 80,
-                    margin: EdgeInsets.only(left: 5, right: 5),
-                    padding:
-                        EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 5),
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Color(0xff5DB2E8),
-                        ),
-                        color: Color(0xffffffff),
-                        borderRadius: BorderRadius.all(Radius.circular(5)),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.25),
-                            spreadRadius: 0,
-                            blurRadius: 4,
-                            offset: Offset(0, 4), // changes position of shadow
+                          color: Color(0xffffffff),
+                          borderRadius: BorderRadius.all(Radius.circular(5)),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.25),
+                              spreadRadius: 0,
+                              blurRadius: 4,
+                              offset:
+                                  Offset(0, 4), // changes position of shadow
+                            ),
+                          ]),
+                      child: Center(
+                        child: Text("Mis pastillas",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w300,
+                                color: Color(0xff000000))),
+                      )),
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return Pastillas();
+                        },
+                      ),
+                    );
+                  },
+                ),
+                InkWell(
+                  child: Container(
+                      height: 55,
+                      width: 80,
+                      margin: EdgeInsets.only(left: 5, right: 5),
+                      padding:
+                          EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 5),
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Color(0xff5DB2E8),
                           ),
-                        ]),
-                    child: Center(
-                      child: Text("Mis recetas",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w300,
-                              color: Color(0xff000000))),
-                    )),
-                Container(
-                    height: 55,
-                    width: 80,
-                    margin: EdgeInsets.only(left: 5, right: 5),
-                    padding:
-                        EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 5),
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Color(0xff5DB2E8),
-                        ),
-                        color: Color(0xffffffff),
-                        borderRadius: BorderRadius.all(Radius.circular(5)),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.25),
-                            spreadRadius: 0,
-                            blurRadius: 4,
-                            offset: Offset(0, 4), // changes position of shadow
+                          color: Color(0xffffffff),
+                          borderRadius: BorderRadius.all(Radius.circular(5)),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.25),
+                              spreadRadius: 0,
+                              blurRadius: 4,
+                              offset:
+                                  Offset(0, 4), // changes position of shadow
+                            ),
+                          ]),
+                      child: Center(
+                        child: Text("Mis recetas",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w300,
+                                color: Color(0xff000000))),
+                      )),
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return Recetas();
+                        },
+                      ),
+                    );
+                  },
+                ),
+                InkWell(
+                  child: Container(
+                      height: 55,
+                      width: 80,
+                      margin: EdgeInsets.only(left: 5, right: 5),
+                      padding:
+                          EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 5),
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Color(0xff5DB2E8),
                           ),
-                        ]),
-                    child: Center(
-                      child: Text("Mis pruebas",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w300,
-                              color: Color(0xff000000))),
-                    )),
-                Container(
-                    height: 55,
-                    width: 80,
-                    margin: EdgeInsets.only(left: 5, right: 5),
-                    padding:
-                        EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 5),
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Color(0xff5DB2E8),
-                        ),
-                        color: Color(0xffffffff),
-                        borderRadius: BorderRadius.all(Radius.circular(5)),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.25),
-                            spreadRadius: 0,
-                            blurRadius: 4,
-                            offset: Offset(0, 4), // changes position of shadow
+                          color: Color(0xffffffff),
+                          borderRadius: BorderRadius.all(Radius.circular(5)),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.25),
+                              spreadRadius: 0,
+                              blurRadius: 4,
+                              offset:
+                                  Offset(0, 4), // changes position of shadow
+                            ),
+                          ]),
+                      child: Center(
+                        child: Text("Mis pruebas",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w300,
+                                color: Color(0xff000000))),
+                      )),
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return PruebasClinicas();
+                        },
+                      ),
+                    );
+                  },
+                ),
+                InkWell(
+                  child: Container(
+                      height: 55,
+                      width: 80,
+                      margin: EdgeInsets.only(left: 5, right: 5),
+                      padding:
+                          EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 5),
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Color(0xff5DB2E8),
                           ),
-                        ]),
-                    child: Center(
-                      child: Text("Mi dieta",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w300,
-                              color: Color(0xff000000))),
-                    )),
-                Container(
-                    height: 55,
-                    width: 80,
-                    margin: EdgeInsets.only(left: 5, right: 5),
-                    padding:
-                        EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 5),
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Color(0xff5DB2E8),
-                        ),
-                        color: Color(0xffffffff),
-                        borderRadius: BorderRadius.all(Radius.circular(5)),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.25),
-                            spreadRadius: 0,
-                            blurRadius: 4,
-                            offset: Offset(0, 4), // changes position of shadow
+                          color: Color(0xffffffff),
+                          borderRadius: BorderRadius.all(Radius.circular(5)),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.25),
+                              spreadRadius: 0,
+                              blurRadius: 4,
+                              offset:
+                                  Offset(0, 4), // changes position of shadow
+                            ),
+                          ]),
+                      child: Center(
+                        child: Text("Mi dieta",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w300,
+                                color: Color(0xff000000))),
+                      )),
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return Dietas();
+                        },
+                      ),
+                    );
+                  },
+                ),
+                InkWell(
+                  child: Container(
+                      height: 55,
+                      width: 80,
+                      margin: EdgeInsets.only(left: 5, right: 5),
+                      padding:
+                          EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 5),
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Color(0xff5DB2E8),
                           ),
-                        ]),
-                    child: Center(
-                      child: Text("Videos",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w300,
-                              color: Color(0xff000000))),
-                    )),
+                          color: Color(0xffffffff),
+                          borderRadius: BorderRadius.all(Radius.circular(5)),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.25),
+                              spreadRadius: 0,
+                              blurRadius: 4,
+                              offset:
+                                  Offset(0, 4), // changes position of shadow
+                            ),
+                          ]),
+                      child: Center(
+                        child: Text("Videos",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w300,
+                                color: Color(0xff000000))),
+                      )),
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return QrCode();
+                        },
+                      ),
+                    );
+                  },
+                ),
               ],
             ),
           )
@@ -576,29 +628,40 @@ class _Home extends State<Home> with TickerProviderStateMixin {
               ],
             ),
           ),
-          Container(
-            padding: EdgeInsets.only(left: 30, right: 30, top: 5, bottom: 5),
-            margin: EdgeInsets.only(top: 10),
-            decoration: BoxDecoration(
-                border: Border.all(
-                  color: Color(0xffC5EDFC),
-                ),
-                color: Color(0xffC5EDFC),
-                borderRadius: BorderRadius.all(Radius.circular(5)),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.25),
-                    spreadRadius: 0,
-                    blurRadius: 4,
-                    offset: Offset(0, 4), // changes position of shadow
+          InkWell(
+            child: Container(
+              padding: EdgeInsets.only(left: 30, right: 30, top: 5, bottom: 5),
+              margin: EdgeInsets.only(top: 10),
+              decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Color(0xffC5EDFC),
                   ),
-                ]),
-            child: Text("Ver evolución",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w300,
-                  color: Color(0xff000000),
-                )),
+                  color: Color(0xffC5EDFC),
+                  borderRadius: BorderRadius.all(Radius.circular(5)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.25),
+                      spreadRadius: 0,
+                      blurRadius: 4,
+                      offset: Offset(0, 4), // changes position of shadow
+                    ),
+                  ]),
+              child: Text("Ver evolución",
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w300,
+                    color: Color(0xff000000),
+                  )),
+            ),
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) {
+                    return Evolucion();
+                  },
+                ),
+              );
+            },
           )
         ],
       ),
@@ -921,44 +984,55 @@ class _Home extends State<Home> with TickerProviderStateMixin {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Container(
-            height: 58,
-            width: 100,
-            decoration: BoxDecoration(
-                border: Border.all(
+          InkWell(
+            child: Container(
+              height: 58,
+              width: 100,
+              decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Color(0xffF7BDBD),
+                  ),
                   color: Color(0xffF7BDBD),
+                  borderRadius: BorderRadius.all(Radius.circular(5)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.25),
+                      spreadRadius: 0,
+                      blurRadius: 4,
+                      offset: Offset(0, 4), // changes position of shadow
+                    ),
+                  ]),
+              child: Center(
+                child: Stack(
+                  alignment: Alignment(0.8, -1),
+                  children: [
+                    FaIcon(
+                      FontAwesomeIcons.hospitalUser,
+                      color: Color(0xFFffffff).withOpacity(0.63),
+                      size: 30,
+                    ),
+                    Container(
+                      width: 100,
+                      child: Text("Chat\nUrgencias",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w700,
+                              color: Color(0xff000000))),
+                    )
+                  ],
                 ),
-                color: Color(0xffF7BDBD),
-                borderRadius: BorderRadius.all(Radius.circular(5)),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.25),
-                    spreadRadius: 0,
-                    blurRadius: 4,
-                    offset: Offset(0, 4), // changes position of shadow
-                  ),
-                ]),
-            child: Center(
-              child: Stack(
-                alignment: Alignment(0.8, -1),
-                children: [
-                  FaIcon(
-                    FontAwesomeIcons.hospitalUser,
-                    color: Color(0xFFffffff).withOpacity(0.63),
-                    size: 30,
-                  ),
-                  Container(
-                    width: 100,
-                    child: Text("Chat\nUrgencias",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w700,
-                            color: Color(0xff000000))),
-                  )
-                ],
               ),
             ),
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) {
+                    return FlutterFactsChatBot("Chat de Emergencia");
+                  },
+                ),
+              );
+            },
           ),
           InkWell(
             child: Container(
@@ -993,33 +1067,44 @@ class _Home extends State<Home> with TickerProviderStateMixin {
               numeroCovid(provincia);
             },
           ),
-          Container(
-            height: 58,
-            width: 100,
-            decoration: BoxDecoration(
-                border: Border.all(
+          InkWell(
+            child: Container(
+              height: 58,
+              width: 100,
+              decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Color(0xffC5EDFC),
+                  ),
                   color: Color(0xffC5EDFC),
+                  borderRadius: BorderRadius.all(Radius.circular(5))),
+              child: Center(
+                  child: Stack(alignment: Alignment(0.8, -1), children: [
+                FaIcon(
+                  FontAwesomeIcons.solidCalendarAlt,
+                  color: Color(0xFFffffff).withOpacity(0.63),
+                  size: 30,
                 ),
-                color: Color(0xffC5EDFC),
-                borderRadius: BorderRadius.all(Radius.circular(5))),
-            child: Center(
-                child: Stack(alignment: Alignment(0.8, -1), children: [
-              FaIcon(
-                FontAwesomeIcons.solidCalendarAlt,
-                color: Color(0xFFffffff).withOpacity(0.63),
-                size: 30,
-              ),
-              Container(
-                  width: 100,
-                  child: Text(
-                    "Cita\nprevia",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w700,
-                        color: Color(0xff000000)),
-                  )),
-            ])),
+                Container(
+                    width: 100,
+                    child: Text(
+                      "Cita\nprevia",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w700,
+                          color: Color(0xff000000)),
+                    )),
+              ])),
+            ),
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) {
+                    return Especialista();
+                  },
+                ),
+              );
+            },
           )
         ],
       ),

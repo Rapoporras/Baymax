@@ -9,13 +9,13 @@ import 'package:Care4U/Component/config.dart';
 
 class CallPage extends StatefulWidget {
   /// non-modifiable channel name of the page
-  final String channelName;
+  final String channelName = "prueba";
 
   /// non-modifiable client role of the page
-  final ClientRole role;
+  final ClientRole role = ClientRole.Broadcaster;
 
   /// Creates a call page with given channel name.
-  const CallPage({Key key, this.channelName, this.role}) : super(key: key);
+  const CallPage({Key key}) : super(key: key);
 
   @override
   _CallPageState createState() => _CallPageState();

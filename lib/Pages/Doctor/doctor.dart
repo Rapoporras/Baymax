@@ -336,7 +336,7 @@ class _Doctor extends State<Doctor> with TickerProviderStateMixin {
                                       ),
                                     ]),
                                 child: Center(
-                                  child: Text("Parte Baja",
+                                  child: Text("Parte Baja y Alta",
                                       style: TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.w500,
@@ -396,7 +396,8 @@ class _Doctor extends State<Doctor> with TickerProviderStateMixin {
                                 Navigator.of(context).push(
                                   MaterialPageRoute(
                                     builder: (context) {
-                                      return FlutterFactsChatBot();
+                                      return FlutterFactsChatBot(
+                                          "Chat de ayuda");
                                     },
                                   ),
                                 );
