@@ -26,7 +26,8 @@ class _QrCode extends State<QrCode> with TickerProviderStateMixin {
                     margin: EdgeInsets.only(top: 40, bottom: 40),
                     child: Center(
                       child: QrImage(
-                        data: 'This QR code has an embedded image as well',
+                        data:
+                            'https://taikai.network/en/i4h/challenges/innomakers4health/projects/ckh9feqqtl1sy0707n8qv7c8c',
                         version: QrVersions.auto,
                         size: 320,
                         gapless: false,

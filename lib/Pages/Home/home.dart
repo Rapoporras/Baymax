@@ -6,7 +6,7 @@ import 'package:Care4U/Pages/Home/evolucion.dart';
 import 'package:Care4U/Pages/Home/pastillas.dart';
 import 'package:Care4U/Pages/Home/pruebas.dart';
 import 'package:Care4U/Pages/Home/recetas.dart';
-import 'package:Care4U/Pages/QrCode.dart';
+import 'package:Care4U/Component/QrCode.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
