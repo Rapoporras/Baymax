@@ -73,6 +73,7 @@ flutter:
   - assets/fundacion.png
   - assets/I4H.png
   - assets/TheCUBE.png
+  - assets/pfizer.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

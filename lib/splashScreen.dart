@@ -12,7 +12,7 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  String _versionName = 'V1.0';
+  // String _versionName = 'V1.0';
   final splashDelay = 4;
 
   @override
@@ -86,7 +86,16 @@ class _SplashScreenState extends State<SplashScreen> {
                               child: Center(
                                 child: Image.asset(
                                   'assets/fundacion.png',
-                                  height: 100,
+                                  height: 80,
+                                  // width: 300,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              child: Center(
+                                child: Image.asset(
+                                  'assets/pfizer.png',
+                                  height: 40,
                                   // width: 300,
                                 ),
                               ),
@@ -94,7 +103,7 @@ class _SplashScreenState extends State<SplashScreen> {
                             Container(
                               child: Image.asset(
                                 'assets/TheCUBE.png',
-                                height: 120,
+                                height: 100,
                                 // width: 300,
                               ),
                             ),
