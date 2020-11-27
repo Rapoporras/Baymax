@@ -33,7 +33,7 @@ class _Especialista extends State<Especialista> with TickerProviderStateMixin {
     },
     {
       'value': '4',
-      'nombre': 'Dra. Catalina Mínguez',
+      'nombre': 'Dra. Cristina Recio',
       'hospital': 'Centro de salud Pavones'
     },
     {
