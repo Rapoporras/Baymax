@@ -122,9 +122,9 @@ class _NuevoContacto extends State<NuevoContacto>
                                     color: Color(0xffF6F6F6),
                                   ),
                                   color: Color(0xffF6F6F6),
-                                  borderRadius: BorderRadius.only(
-                                      topRight: Radius.circular(15),
-                                      topLeft: Radius.circular(15)),
+                                  // borderRadius: BorderRadius.only(
+                                  //     topRight: Radius.circular(15),
+                                  //     topLeft: Radius.circular(15)),
                                 ),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -160,6 +160,55 @@ class _NuevoContacto extends State<NuevoContacto>
                                             fontWeight: FontWeight.w300,
                                             color: Color(0xff000000))),
                                     TextField()
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                // height: 80,
+                                width: MediaQuery.of(context).size.width,
+                                padding: EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: Color(0xffF6F6F6),
+                                  ),
+                                  color: Color(0xffF6F6F6),
+                                  // borderRadius: BorderRadius.only(
+                                  //     topRight: Radius.circular(15),
+                                  //     topLeft: Radius.circular(15)),
+                                ),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Expanded(
+                                      flex: 2,
+                                      child: Text("Documento acreditativo",
+                                          style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w300,
+                                              color: Color(0xff000000))),
+                                    ),
+                                    Expanded(
+                                        child: Center(
+                                            child: Container(
+                                      padding: EdgeInsets.only(
+                                          top: 5,
+                                          bottom: 5,
+                                          left: 20,
+                                          right: 20),
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color: Color(0xff5DB2E8),
+                                        ),
+                                        color: Color(0xffffffff),
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(15)),
+                                      ),
+                                      child: FaIcon(
+                                        FontAwesomeIcons.paperclip,
+                                        color: Color(0xFF0C2231),
+                                      ),
+                                    )))
+                                    // TextField()
                                   ],
                                 ),
                               ),

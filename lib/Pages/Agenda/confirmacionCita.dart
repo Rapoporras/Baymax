@@ -150,43 +150,100 @@ class _ConfirmacionCita extends State<ConfirmacionCita>
                         ],
                       ),
                       Container(
-                          height: 150,
+                          // height: 150,
                           padding: EdgeInsets.all(10),
-                          child: Container(
-                            padding: EdgeInsets.all(5),
-                            decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: Color(0xffF6F6F6),
+                          child: Column(
+                            children: [
+                              Container(
+                                padding: EdgeInsets.all(5),
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: Color(0xffF6F6F6),
+                                    ),
+                                    color: Color(0xffF6F6F6),
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(15),
+                                        topRight: Radius.circular(15)),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withOpacity(0.25),
+                                        spreadRadius: 0,
+                                        blurRadius: 4,
+                                        offset: Offset(
+                                            0, 4), // changes position of shadow
+                                      ),
+                                    ]),
+                                child: TextField(
+                                  maxLines: 10,
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w400),
+                                  decoration: InputDecoration(
+                                      fillColor: Colors.black,
+                                      hintText:
+                                          "Escribe brevemente el motivo de tu consulta...",
+                                      hintStyle: TextStyle(
+                                          // backgroundColor: Colors.white,
+                                          fontWeight: FontWeight.w300,
+                                          color: Colors.black)),
+                                  onChanged: (text) {
+                                    value = text;
+                                  },
                                 ),
-                                color: Color(0xffF6F6F6),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(15)),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black.withOpacity(0.25),
-                                    spreadRadius: 0,
-                                    blurRadius: 4,
-                                    offset: Offset(
-                                        0, 4), // changes position of shadow
-                                  ),
-                                ]),
-                            child: TextField(
-                              maxLines: 10,
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w400),
-                              decoration: InputDecoration(
-                                  fillColor: Colors.black,
-                                  hintText:
-                                      "Escribe brevemente el motivo de tu consulta...",
-                                  hintStyle: TextStyle(
-                                      // backgroundColor: Colors.white,
-                                      fontWeight: FontWeight.w300,
-                                      color: Colors.black)),
-                              onChanged: (text) {
-                                value = text;
-                              },
-                            ),
+                              ),
+                              Container(
+                                padding: EdgeInsets.all(10),
+                                width: MediaQuery.of(context).size.width,
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: Color(0xff5DB2E8),
+                                    ),
+                                    color: Color(0xff5DB2E8),
+                                    borderRadius: BorderRadius.only(
+                                        bottomLeft: Radius.circular(15),
+                                        bottomRight: Radius.circular(15)),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withOpacity(0.25),
+                                        spreadRadius: 0,
+                                        blurRadius: 4,
+                                        offset: Offset(
+                                            0, 4), // changes position of shadow
+                                      ),
+                                    ]),
+                                // color: Colors.red,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    InkWell(
+                                      child: Container(
+                                        child: FaIcon(
+                                          FontAwesomeIcons.paperclip,
+                                          color: Color(0xFF0C2231),
+                                          size: 25,
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      width: 2,
+                                      height: 30,
+                                      color: Color(0xFF0C2231),
+                                      child: Text(""),
+                                    ),
+                                    InkWell(
+                                      child: Container(
+                                        child: FaIcon(
+                                          FontAwesomeIcons.camera,
+                                          color: Color(0xFF0C2231),
+                                          size: 25,
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              )
+                            ],
                           )),
                       RadioListTile(
                         value: 1,

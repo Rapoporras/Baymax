@@ -15,11 +15,57 @@ class Especialista extends StatefulWidget {
 class _Especialista extends State<Especialista> with TickerProviderStateMixin {
   List<S2Choice<String>> especialidades = [];
 
-  List<Map<String, dynamic>> medicos = [];
+  List<Map<String, dynamic>> medicos = [
+    {
+      'value': '1',
+      'nombre': 'Dr. José Luis López',
+      'hospital': 'Centro de salud Valdebernardo'
+    },
+    {
+      'value': '2',
+      'nombre': 'Dra. Sofía Ortega ',
+      'hospital': 'Centro de salud Pavones'
+    },
+    {
+      'value': '3',
+      'nombre': 'Dra. Catalina Mínguez',
+      'hospital': 'Centro de salud Pavones'
+    },
+    {
+      'value': '4',
+      'nombre': 'Dra. Catalina Mínguez',
+      'hospital': 'Centro de salud Pavones'
+    },
+    {
+      'value': '5',
+      'nombre': 'Dr. Alberto del Amo   ',
+      'hospital': 'Hospital Infanta Leonor'
+    },
+    {
+      'value': '6',
+      'nombre': 'Dr. Jaime Caravaca ',
+      'hospital': 'Hospital Infanta Leonor'
+    },
+    {
+      'value': '7',
+      'nombre': 'Dra. Jimena Sánchez ',
+      'hospital': 'Centro de salud Pavones'
+    },
+    {
+      'value': '8',
+      'nombre': 'Dra. Susana Bermejo ',
+      'hospital': 'Hospital Gregorio Marañón'
+    },
+    {
+      'value': '9',
+      'nombre': 'Dr. Mario Lozano',
+      'hospital': 'Hospital Gregorio Marañón'
+    },
+  ];
   @override
   void initState() {
     super.initState();
-    obtenerMedicos();
+    // obtenerMedicos();
     obtenerEspecialidades();
   }
 
@@ -37,6 +83,7 @@ class _Especialista extends State<Especialista> with TickerProviderStateMixin {
         ),
         body: ListView(
           children: [
+            codigo_postal(),
             tipoCita(),
             doctor(),
             fechaHora(),
@@ -173,7 +220,7 @@ class _Especialista extends State<Especialista> with TickerProviderStateMixin {
   Widget doctor() {
     List<String> medico = [];
 
-    print(medicos);
+    // print(medicos);
     return Container(
       padding: EdgeInsets.only(left: 20, right: 20),
       // height: 80,
@@ -212,14 +259,9 @@ class _Especialista extends State<Especialista> with TickerProviderStateMixin {
                 onChange: (state) => setState(() => medico = state.value),
                 choiceItems: S2Choice.listFrom<String, Map>(
                   source: medicos,
-                  value: (index, item) => item['dni'],
-                  title: (index, item) =>
-                      item['nombre'] +
-                      " " +
-                      item["apellido1"] +
-                      " " +
-                      item["apellido2"],
-                  group: (index, item) => item['especialidad'],
+                  value: (index, item) => item['value'],
+                  title: (index, item) => item['nombre'],
+                  group: (index, item) => item['hospital'],
                 ),
                 choiceGrouped: true,
                 choiceConfig: const S2ChoiceConfig(
@@ -293,6 +335,56 @@ class _Especialista extends State<Especialista> with TickerProviderStateMixin {
                   return null;
                 },
                 onSaved: (val) => print(val),
+              ),
+            ),
+          ],
+        ));
+  }
+
+  Widget codigo_postal() {
+    String value = "";
+    return Container(
+        margin: EdgeInsets.only(top: 25, bottom: 25),
+        padding: EdgeInsets.only(left: 20, right: 20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text("Selecciona código postal",
+                style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w400,
+                    color: Color(0xff000000))),
+            Container(
+              padding: EdgeInsets.all(10),
+              margin: EdgeInsets.only(top: 10),
+              decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Color(0xffffffff),
+                  ),
+                  color: Color(0xffffffff),
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.25),
+                      spreadRadius: 0,
+                      blurRadius: 4,
+                      offset: Offset(0, 4), // changes position of shadow
+                    ),
+                  ]),
+              child: TextField(
+                maxLines: 1,
+                style:
+                    TextStyle(color: Colors.black, fontWeight: FontWeight.w400),
+                decoration: InputDecoration(
+                    fillColor: Colors.black,
+                    hintText: "Escribe tu código postal",
+                    hintStyle: TextStyle(
+                        // backgroundColor: Colors.white,
+                        fontWeight: FontWeight.w300,
+                        color: Colors.black)),
+                onChanged: (text) {
+                  value = text;
+                },
               ),
             ),
           ],

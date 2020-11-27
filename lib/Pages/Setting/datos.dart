@@ -173,36 +173,47 @@ class _Datos extends State<Datos> with TickerProviderStateMixin {
                       // padding: EdgeInsets.only(left: 20, right: 20),
                       // margin: EdgeInsets.only(top: 25, bottom: 25),
                       child: Container(
-                          height: 40,
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Color(0xffC5EDFC),
-                              ),
+                        height: 40,
+                        decoration: BoxDecoration(
+                            border: Border.all(
                               color: Color(0xffC5EDFC),
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(15),
-                                  topRight: Radius.circular(15)),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.25),
-                                  spreadRadius: 0,
-                                  blurRadius: 4,
-                                  offset: Offset(
-                                      0, 4), // changes position of shadow
-                                ),
-                              ]),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Center(
-                                child: Text("Sexualidad",
+                            ),
+                            color: Color(0xffC5EDFC),
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(15),
+                                topRight: Radius.circular(15)),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.25),
+                                spreadRadius: 0,
+                                blurRadius: 4,
+                                offset:
+                                    Offset(0, 4), // changes position of shadow
+                              ),
+                            ]),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              flex: 9,
+                              child: Center(
+                                child: Text("Género",
                                     style: TextStyle(
                                         fontSize: 20,
                                         fontWeight: FontWeight.w400,
                                         color: Color(0xff000000))),
-                              )
-                            ],
-                          )),
+                              ),
+                            ),
+                            Expanded(
+                              child: FaIcon(
+                                FontAwesomeIcons.infoCircle,
+                                color: Color(0xFF0C2231),
+                                size: 25,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
                     ),
                     Container(
                       child: Container(

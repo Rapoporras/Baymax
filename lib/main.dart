@@ -1,5 +1,6 @@
 import 'package:Care4U/Component/config.dart';
 import 'package:Care4U/Pages/main_page.dart';
+import 'package:Care4U/splashScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
@@ -11,6 +12,7 @@ Future<void> main() async {
   await Hive.initFlutter();
   box = await Hive.openBox('easyTheme');
   box = await Hive.openBox('movilidadreducida');
+  box = await Hive.openBox('notificacion');
   runApp(Care4UApp());
 }
 
@@ -53,7 +55,7 @@ class _Care4UApp extends State<Care4UApp> {
       themeMode: currentTheme.currentTheme(),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: MainPage(),
+        body: SplashScreen(),
       ),
       routes: <String, WidgetBuilder>{
         '/home': (BuildContext context) => new MainPage(),

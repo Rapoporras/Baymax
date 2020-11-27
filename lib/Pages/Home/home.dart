@@ -7,6 +7,7 @@ import 'package:Care4U/Pages/Home/pastillas.dart';
 import 'package:Care4U/Pages/Home/pruebas.dart';
 import 'package:Care4U/Pages/Home/recetas.dart';
 import 'package:Care4U/Component/QrCode.dart';
+import 'package:Care4U/Pages/Home/urgencias.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -1013,7 +1014,7 @@ class _Home extends State<Home> with TickerProviderStateMixin {
                     ),
                     Container(
                       width: 100,
-                      child: Text("Chat\nUrgencias",
+                      child: Text("Botón\nUrgencias",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               fontSize: 18,
@@ -1026,12 +1027,13 @@ class _Home extends State<Home> with TickerProviderStateMixin {
             ),
             onTap: () {
               Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) {
-                    return FlutterFactsChatBot("Chat de Emergencia");
-                  },
-                ),
+                MaterialPageRoute(builder: (context) {
+                  return Urgencias();
+                }),
               );
+            },
+            onLongPress: () {
+              launch('tel:/112');
             },
           ),
           InkWell(

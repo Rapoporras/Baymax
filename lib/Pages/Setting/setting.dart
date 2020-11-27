@@ -17,10 +17,12 @@ class Setting extends StatefulWidget {
 
 class _Setting extends State<Setting> with TickerProviderStateMixin {
   String value = "";
+  String value2 = "";
   // Declare this variable
   int selectedRadioTile;
   int selectedRadio;
   bool isSwitched = false;
+  bool isSwitched2 = false;
 
   @override
   void initState() {
@@ -32,6 +34,12 @@ class _Setting extends State<Setting> with TickerProviderStateMixin {
       isSwitched = box.get('movilidadreducida');
     } else {
       box.put('movilidadreducida', isSwitched);
+    }
+
+    if (box.containsKey('notificacion')) {
+      isSwitched2 = box.get('notificacion');
+    } else {
+      box.put('notificacion', isSwitched2);
     }
   }
 
@@ -112,15 +120,15 @@ class _Setting extends State<Setting> with TickerProviderStateMixin {
                                     size: 30,
                                   ),
                                 )),
-                            Container(
-                              height: 65,
-                              padding: EdgeInsets.only(left: 10),
-                              child: Center(
+                            Expanded(
+                              child: Container(
+                                height: 65,
+                                padding: EdgeInsets.only(left: 10),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text("Alarma",
+                                    Text("Notificaciones",
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                             fontSize: 20,
@@ -135,7 +143,34 @@ class _Setting extends State<Setting> with TickerProviderStateMixin {
                                   ],
                                 ),
                               ),
-                            )
+                            ),
+                            Container(
+                                width: 60,
+                                height: 65,
+                                // margin: EdgeInsets.only(top: 5, left: 15),
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: Color(0xffC5EDFC),
+                                  ),
+                                  color: Color(0xffC5EDFC),
+                                  borderRadius: BorderRadius.only(
+                                      topRight: Radius.circular(15),
+                                      bottomRight: Radius.circular(15)),
+                                ),
+                                child: Center(
+                                  child: Switch(
+                                    value: isSwitched2,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        isSwitched2 = value;
+                                        box.put('notificacion', isSwitched2);
+                                      });
+                                    },
+                                    inactiveTrackColor: Color(0xff0C2231),
+                                    activeTrackColor: Color(0xff5DB2E8),
+                                    activeColor: Color(0xff0C2231),
+                                  ),
+                                )),
                           ],
                         ),
                       ],
@@ -640,10 +675,10 @@ class _Setting extends State<Setting> with TickerProviderStateMixin {
                                     size: 30,
                                   ),
                                 )),
-                            Container(
-                              height: 65,
-                              padding: EdgeInsets.only(left: 5, right: 5),
-                              child: Center(
+                            Expanded(
+                              child: Container(
+                                height: 65,
+                                padding: EdgeInsets.only(left: 5, right: 5),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -706,6 +741,9 @@ class _Setting extends State<Setting> with TickerProviderStateMixin {
                 //   ),
                 // );
               },
+            ),
+            Container(
+              height: 40,
             )
           ],
         ));
